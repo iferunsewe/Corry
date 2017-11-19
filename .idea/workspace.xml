@@ -88,7 +88,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AuthenticationScreen.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="AuthenticationScreen.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/authentication/AuthenticationScreen.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
@@ -96,6 +96,16 @@
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -123,6 +133,7 @@
         <option value="$PROJECT_DIR$/src/components/buyer/ChooseTravellerScreen.js" />
         <option value="$PROJECT_DIR$/src/components/buyer/PostRequestScreen.js" />
         <option value="$PROJECT_DIR$/src/components/authentication/AuthenticationScreen.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -390,12 +401,12 @@
       <option name="presentableId" value="Default" />
       <updated>1510916558025</updated>
       <workItem from="1510916559269" duration="3425000" />
-      <workItem from="1511117663329" duration="9632000" />
+      <workItem from="1511117663329" duration="9763000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13057000" />
+    <option name="totallyTimeSpent" value="13188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1158" height="817" extended-state="0" />
@@ -768,6 +779,14 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
