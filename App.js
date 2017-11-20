@@ -17,10 +17,10 @@ export default class App extends Component {
         <Router>
           <Scene key="root">
             <Scene key="splash" component={SplashScreen} />
-            <Scene key="decision" component={DecisionScreen} initial={true}/>
+            <Scene key="decision" component={DecisionScreen} />
             <Scene key="buyer" component={BuyerScreen} />
             <Scene key="traveller" component={TravellerScreen} />
-            <Scene key="authentication" component={AuthenticationScreen} />
+            <Scene key="authentication" component={AuthenticationScreen} initial={true}/>
             <Scene key="chooseTraveller" component={ChooseTravellerScreen} />
             <Scene key="postRequest" component={PostRequestScreen} />
             <Scene key="chooseRequest" component={ChooseRequestScreen} />
