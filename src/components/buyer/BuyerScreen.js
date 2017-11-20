@@ -8,8 +8,6 @@ import {
 import { Actions } from 'react-native-router-flux';
 
 export default class BuyerScreen extends Component{
-
-
     render() {
         return(
             <View style={styles.container}>

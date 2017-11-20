@@ -8,8 +8,6 @@ import {
 import { Actions } from 'react-native-router-flux';
 
 export default class TravellerScreen extends Component{
-
-
     render() {
         return(
             <View style={styles.container}>
