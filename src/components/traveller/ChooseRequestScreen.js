@@ -8,7 +8,8 @@ import { Actions } from 'react-native-router-flux';
 
 export default class ChooseRequestScreen extends Component{
     componentWillMount(){
-        Actions.authentication();
+        // Displays login screen before showing this screen
+        // Actions.authentication();
     }
 
     render() {

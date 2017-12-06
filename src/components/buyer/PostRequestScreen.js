@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native';
 import { Button } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
@@ -10,7 +11,8 @@ import StyledInput from '../helpers/StyledInput'
 
 export default class PostRequestScreen extends Component{
     componentWillMount(){
-        Actions.authentication();
+        // Displays login screen before showing this screen
+        // Actions.authentication();
     }
 
     render() {
