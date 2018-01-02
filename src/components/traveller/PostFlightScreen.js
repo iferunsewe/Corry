@@ -27,14 +27,20 @@ export default class PostFlightScreen extends Component{
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>What are your flight details?</Text>
-                <StyledInput title="outbound flight" placeholder="flying from?"/>
-                <StyledInput title="inbound flight" placeholder="flying to?"/>
+                <StyledInput
+                    title="outbound flight"
+                    placeholder="flying from?"
+                />
+                <StyledInput
+                    title="inbound flight"
+                    placeholder="flying to?"
+                />
                 <DatePickerIOS
                     date={this.state.date}
                     onDateChange={(date)=>this.setState({date})}
                     mode="date"
                     style={styles.datePicker}/>
-                <Button title='make request' style={styles.button} onPress={() => Actions.chooseRequest()}/>
+                <Button title='submit flight' style={styles.button} onPress={() => Actions.chooseRequest()}/>
             </View>
         );
     }

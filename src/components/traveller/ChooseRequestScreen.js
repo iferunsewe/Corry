@@ -5,6 +5,8 @@ import {
     StyleSheet
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { List, ListItem } from 'react-native-elements'
+import RequestSection from '../traveller/RequestSection';
 
 export default class ChooseRequestScreen extends Component{
     componentWillMount(){
@@ -15,7 +17,22 @@ export default class ChooseRequestScreen extends Component{
     render() {
         return(
             <View style={styles.container}>
-                <Text style={styles.text}>Choose request</Text>
+                <Text style={styles.text}>Destination</Text>
+
+                <Text style={styles.text}>Travellers</Text>
+                <List containerStyle={styles.requestsList}>
+                    {
+                        dummyRequests.map((l, i) => (
+                            <RequestSection
+                                name={l.name}
+                                location={l.location}
+                                key={i}
+                                price={l.price}
+                                traverllersFee={l.travellersFee}
+                            />
+                        ))
+                    }
+                </List>
             </View>
         );
     }
@@ -29,6 +46,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        fontSize: 64
+        fontSize: 25,
+        paddingBottom: 20
+    },
+    requestsList: {
+        flex: 1,
+        flexDirection: 'column'
     }
 });
+
+const dummyRequests = [
+    {
+        name: 'Converse Trainers',
+        location: 'London',
+        Price: '£50',
+        travellersFee: '£5'
+    },
+    {
+        name: 'John Lewis Pots and Pans',
+        location: 'London',
+        Price: '£67',
+        travellersFee: '£6.70'
+    },
+    {
+        name: 'iPhone X',
+        location: 'London',
+        Price: '£999',
+        travellersFee: '£99'
+    },
+];
