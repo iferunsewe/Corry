@@ -28,7 +28,7 @@ export default class ChooseRequestScreen extends Component{
                                 location={l.location}
                                 key={i}
                                 price={l.price}
-                                traverllersFee={l.travellersFee}
+                                travellersFee={l.travellersFee}
                             />
                         ))
                     }
@@ -59,19 +59,19 @@ const dummyRequests = [
     {
         name: 'Converse Trainers',
         location: 'London',
-        Price: '£50',
+        price: '£50',
         travellersFee: '£5'
     },
     {
         name: 'John Lewis Pots and Pans',
         location: 'London',
-        Price: '£67',
+        price: '£67',
         travellersFee: '£6.70'
     },
     {
         name: 'iPhone X',
         location: 'London',
-        Price: '£999',
+        price: '£999',
         travellersFee: '£99'
     },
 ];

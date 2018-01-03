@@ -23,8 +23,8 @@ export default class RequestSection extends Component {
                     <View style={styles.subtitleView}>
                         <Text>{this.props.name}</Text>
                         <Text>{this.props.location}</Text>
-                        <Text>{this.props.price}</Text>
-                        <Text>{this.props.travellersFee}</Text>
+                        <Text>Price: {this.props.price}</Text>
+                        <Text>Fee: {this.props.travellersFee}</Text>
                     </View>
                 }
             >
