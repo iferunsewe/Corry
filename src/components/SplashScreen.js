@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {  View, Text, StyleSheet } from 'react-native';
+import {  View, Text, StyleSheet, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class SplashScreen extends Component {
     componentDidMount(){
         this.timeoutHandle = setTimeout(()=>{
             Actions.decision();
-        }, 5000);
+        }, 2000);
     }
 
     componentWillUnmount(){
@@ -16,7 +16,9 @@ export default class SplashScreen extends Component {
     render() {
         return(
           <View style={styles.container}>
-              <Text style={styles.text}>Splash Screen</Text>
+            <Image
+                source={require('../../assets/img/smaller-logo.png')}
+            />
           </View>
         );
     }
@@ -25,11 +27,8 @@ export default class SplashScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#EEBE2E',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    fontSize: 64
   }
 });

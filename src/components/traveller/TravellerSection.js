@@ -21,7 +21,7 @@ export default class TravellerSection extends Component {
             <ListItem
                 containerStyle={styles.container}
                 hideChevron={true}
-                avatar={require('../../assets/abstract-user-flat-1.png')}
+                avatar={require('../../../assets/img/abstract-user-flat-1.png')}
                 avatarStyle={styles.avatarStyle}
                 avatarContainerStyle={styles.avatarContainer}
                 subtitle={

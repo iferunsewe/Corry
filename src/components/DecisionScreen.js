@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {
-    Button,
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from 'react-native';
+import { Button } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
 
 export default class DecisionScreen extends Component {
@@ -12,12 +13,21 @@ export default class DecisionScreen extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Traveller" onPress={() => Actions.traveller()} />
-                </View>
-                <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Buyer" onPress={() => Actions.buyer()}/>
-                </View>
+                <Button containerViewStyle={styles.button}
+                        buttonStyle={styles.button}
+                        title="Traveller"
+                        onPress={() => Actions.traveller()}
+                        icon={{name: 'aircraft-take-off', type: 'entypo'}}
+                        fontFamily='myriad-pro-regular'
+                />
+
+                <Button containerViewStyle={styles.button}
+                        buttonStyle={styles.button}
+                        title="Buyer"
+                        onPress={() => Actions.buyer()}
+                        icon={{name: 'shopping-cart', type: 'foundation'}}
+                        fontFamily='myriad-pro-regular'
+                />
             </View>
         );
     }
@@ -26,7 +36,7 @@ export default class DecisionScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#EEBE2E',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -38,7 +48,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    buttonContainer: {
+        flex: 0.5
+    },
     button:{
-        flex: 1
+        width: Dimensions.get('window').width,
+        flex: 1,
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });

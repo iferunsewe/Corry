@@ -9,6 +9,10 @@ import { List, ListItem } from 'react-native-elements'
 import RequestSection from '../traveller/RequestSection';
 
 export default class ChooseRequestScreen extends Component{
+    constructor(){
+        super();
+    }
+
     componentWillMount(){
         // Displays login screen before showing this screen
         // Actions.authentication();
@@ -18,7 +22,9 @@ export default class ChooseRequestScreen extends Component{
         return(
             <View style={styles.container}>
                 <Text style={styles.text}>Destination</Text>
-
+                <View>
+                    <Text style={styles.destinationText}>{this.props.destination}</Text>
+                </View>
                 <Text style={styles.text}>Travellers</Text>
                 <List containerStyle={styles.requestsList}>
                     {
@@ -47,6 +53,10 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 25,
+        paddingBottom: 20
+    },
+    destinationText: {
+        fontSize: 18,
         paddingBottom: 20
     },
     requestsList: {

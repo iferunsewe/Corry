@@ -3,17 +3,18 @@ import {
     View,
     Text,
     StyleSheet,
-    DatePickerIOS
+    DatePickerIOS,
+    TextInput
 } from 'react-native';
 import { Button } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
-import StyledInput from '../helpers/StyledInput'
 
 export default class PostFlightScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
             date: new Date(),
+            destination: ''
         }
     }
 
@@ -27,20 +28,24 @@ export default class PostFlightScreen extends Component{
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>What are your flight details?</Text>
-                <StyledInput
+                <TextInput
                     title="outbound flight"
                     placeholder="flying from?"
+                    style={styles.textInput}
                 />
-                <StyledInput
+                <TextInput
                     title="inbound flight"
                     placeholder="flying to?"
+                    style={styles.textInput}
+                    onChangeText={(text) => this.setState({destination: text})}
+                    value={this.state.destination}
                 />
                 <DatePickerIOS
                     date={this.state.date}
                     onDateChange={(date)=>this.setState({date})}
                     mode="date"
                     style={styles.datePicker}/>
-                <Button title='submit flight' style={styles.button} onPress={() => Actions.chooseRequest()}/>
+                <Button title='submit flight' style={styles.button} onPress={() => Actions.chooseRequest({destination: this.state.destination})}/>
             </View>
         );
     }
@@ -64,5 +69,12 @@ const styles = StyleSheet.create({
     button: {
         width: 300,
         paddingTop: 30
+    },
+    textInput: {
+        width: 200,
+        height: 40,
+        borderBottomColor: 'gray',
+        borderBottomWidth: 1,
+        padding: 10
     }
 });
