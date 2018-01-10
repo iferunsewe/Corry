@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    TextInput,
+    Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
@@ -10,6 +12,14 @@ import { List, ListItem } from 'react-native-elements'
 import TravellerSection from '../traveller/TravellerSection';
 
 export default class ChooseTravellerScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            destinationTextInput: ''
+        };
+    }
+
+
     componentWillMount() {
         // Displays login screen before showing this screen
         // Actions.authentication();
@@ -18,23 +28,34 @@ export default class ChooseTravellerScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Enter destination</Text>
-                <StyledInput
-                    title="traveller's destination"
-                    placeholder="London, Lagos, New York..."
-                />
-                <Text style={styles.text}>Travellers</Text>
-                <List containerStyle={styles.travellersList}>
-                    {
-                        dummyTravellers.map((l, i) => (
-                            <TravellerSection
-                                name={l.name}
-                                location={l.location}
-                                key={i}
-                            />
-                        ))
-                    }
-                </List>
+                <View
+                    style={styles.destinationContainer}
+                    fontFamily='myriad-pro-regular'
+                >
+                    <Text style={[styles.text, styles.destinationTitle]}>Enter destination</Text>
+                    <TextInput
+                        title="traveller's destination"
+                        placeholder="London, Lagos, New York..."
+                        onChangeText={(text) => this.setState({destinationTextInput: text})}
+                        value={this.state.destinationTextInput}
+                        style={styles.destinationTextInput}
+                    />
+                </View>
+                <View style={styles.travellersContainer}>
+                    <Text style={styles.text}>Travellers</Text>
+                    <List containerStyle={styles.travellersList}>
+                        {
+                            dummyTravellers.map((l, i) => (
+                                <TravellerSection
+                                    name={l.name}
+                                    location={l.location}
+                                    avatarUrl={l.avatarUrl}
+                                    key={i}
+                                />
+                            ))
+                        }
+                    </List>
+                </View>
             </View>
         );
     }
@@ -44,16 +65,19 @@ const dummyTravellers = [
     {
         name: 'John Smith',
         location: 'London',
+        avatarUrl: require('../../../assets/img/johnson.jpg'),
         rating: 4.32
     },
     {
         name: 'Thomas Shelby',
         location: 'Birmingham',
+        avatarUrl: require('../../../assets/img/johnson.jpg'),
         rating: 5
     },
     {
         name: 'Don Draper',
         location: 'New York',
+        avatarUrl: require('../../../assets/img/johnson.jpg'),
         rating: 3.4
     },
 ];
@@ -62,16 +86,38 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+        borderColor: 'transparent'
+    },
+    destinationContainer: {
+        flex: 0.2
+    },
+    travellersContainer: {
+        flex: 0.8
     },
     text: {
-        fontSize: 25,
-        paddingBottom: 20
+        color: '#EEBE2E',
+        borderBottomWidth: 0,
+        fontSize: 20,
+        marginLeft: 20
     },
     travellersList: {
-        flex: 1,
+        borderColor: 'transparent',
         flexDirection: 'row',
         flexWrap: 'wrap'
+    },
+    destinationTextInput: {
+        color: '#E6E7E8',
+        borderColor: '#E6E7E8',
+        borderWidth: 1.5,
+        borderRadius: 6,
+        width: Dimensions.get('window').width / 1.125,
+        height: Dimensions.get('window').height / 18,
+        alignContent: 'center',
+        marginLeft: 20,
+        paddingLeft: 20
+    },
+    destinationTitle:{
+        marginTop: 40,
+        marginBottom: 20
     }
 });

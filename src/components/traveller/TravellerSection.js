@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
 
-
 export default class TravellerSection extends Component {
     constructor() {
         super();
@@ -21,15 +20,18 @@ export default class TravellerSection extends Component {
             <ListItem
                 containerStyle={styles.container}
                 hideChevron={true}
-                avatar={require('../../../assets/img/abstract-user-flat-1.png')}
-                avatarStyle={styles.avatarStyle}
+                avatar={this.props.avatarUrl}
                 avatarContainerStyle={styles.avatarContainer}
+                avatarOverlayContainerStyle={styles.avatarOverlayContainer}
+                avatarStyle={styles.avatarStyle}
                 subtitle={
                     <View style={styles.subtitleView}>
-                        <Text>{this.props.name}</Text>
-                        <Text>{this.props.location}</Text>
+                        <Text style={styles.locationText}>{this.props.location}</Text>
+                        <Text style={styles.nameText}>{this.props.name}</Text>
                     </View>
                 }
+                subtitleContainerStyle={styles.subtitlesContainer}
+                fontFamily='myriad-pro-regular'
             >
             </ListItem>
 
@@ -39,21 +41,34 @@ export default class TravellerSection extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        borderBottomWidth: 0,
         width: Dimensions.get('window').width / 2,
-        height: Dimensions.get('window').height / 4,
-        flexDirection: 'column'
+        height: Dimensions.get('window').height / 4
     },
     avatarStyle: {
-        backgroundColor: 'green'
+        position: 'absolute',
+        height: 100,
+        width: 100,
+        borderRadius: 10
     },
     avatarContainer: {
-        width: 100,
-        height: 120,
-        backgroundColor: 'blue',
+        width: "100%",
         position: 'absolute'
     },
     subtitleView: {
-        flexDirection: 'column',
-        top: 150
+        alignItems: 'center'
+    },
+    avatarOverlayContainer:{
+        backgroundColor: 'transparent',
+        flexDirection: 'row',
+        alignItems: 'flex-start'
+    },
+    subtitlesContainer:{
+        top: 110
+    },
+    locationText: {
+        fontSize: 10,
+        color: '#BCBEC0',
+        marginBottom: 2
     }
 });

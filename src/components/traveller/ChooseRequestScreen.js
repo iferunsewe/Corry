@@ -25,7 +25,7 @@ export default class ChooseRequestScreen extends Component{
                 <View>
                     <Text style={styles.destinationText}>{this.props.destination}</Text>
                 </View>
-                <Text style={styles.text}>Travellers</Text>
+                <Text style={styles.text}>Requests</Text>
                 <List containerStyle={styles.requestsList}>
                     {
                         dummyRequests.map((l, i) => (

@@ -1,19 +1,25 @@
 import React, {Component} from 'react';
-import {  View, Text, StyleSheet, TextInput } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    Dimensions
+} from 'react-native';
 
 export default class StyledInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input_text: ''
+            textInput: ''
         };
     }
 
     render() {
         return(
                 <TextInput title={this.props.title || ''}
-                           onChangeText={(text) => this.setState({input_text: text})}
-                           value={this.state.input_text}
+                           onChangeText={(text) => this.setState({textInput: text})}
+                           value={this.state.textInput}
                            style={styles.textInput}
                            placeholder={this.props.placeholder || ''}
                            secureTextEntry={this.props.secureTextEntry || false}
@@ -25,10 +31,14 @@ export default class StyledInput extends Component {
 
 const styles = StyleSheet.create({
     textInput: {
-        width: 200,
-        height: 40,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 1,
-        padding: 10
+        width: Dimensions.get('window').width / 1.25,
+        height: Dimensions.get('window').height / 18,
+        borderWidth: 1.5,
+        padding: 10,
+        fontSize: 15,
+        borderRadius: 6,
+        borderColor: '#E6E7E8',
+        marginBottom: 10,
+        fontFamily: 'myriad-pro-regular'
     }
 });
