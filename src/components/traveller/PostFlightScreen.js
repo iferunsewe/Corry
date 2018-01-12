@@ -3,10 +3,9 @@ import {
     View,
     Text,
     StyleSheet,
-    DatePickerIOS,
-    TextInput
+    Dimensions
 } from 'react-native';
-import { Button } from 'react-native-elements'
+import { Button, SearchBar} from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
 
 export default class PostFlightScreen extends Component{
@@ -27,25 +26,27 @@ export default class PostFlightScreen extends Component{
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>What are your flight details?</Text>
-                <TextInput
-                    title="outbound flight"
-                    placeholder="flying from?"
-                    style={styles.textInput}
+                <View style={styles.title}>
+                    <Text style={styles.text}>Enter flight number</Text>
+                </View>
+                <View style={styles.flightDetailsContainer}>
+                    <SearchBar
+                        onChangeText={(text) => this.setState({destination: text})}
+                        placeholder='eg. AA100...'
+                        containerStyle={styles.searchContainer}
+                        inputStyle={styles.searchInput}
+                        round
+                        noIcon
+                    />
+                </View>
+                <Button title='submit'
+                        style={styles.button}
+                        onPress={() => Actions.chooseRequest({destination: this.state.destination})}
+                        containerViewStyle={styles.buttonContainer}
+                        fontFamily="myriad-pro-regular"
+                        backgroundColor="#EEBE2E"
+                        color="#231F20"
                 />
-                <TextInput
-                    title="inbound flight"
-                    placeholder="flying to?"
-                    style={styles.textInput}
-                    onChangeText={(text) => this.setState({destination: text})}
-                    value={this.state.destination}
-                />
-                <DatePickerIOS
-                    date={this.state.date}
-                    onDateChange={(date)=>this.setState({date})}
-                    mode="date"
-                    style={styles.datePicker}/>
-                <Button title='submit flight' style={styles.button} onPress={() => Actions.chooseRequest({destination: this.state.destination})}/>
             </View>
         );
     }
@@ -54,27 +55,43 @@ export default class PostFlightScreen extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: '#fff'
     },
     text: {
         fontSize: 25,
-        paddingBottom: 20
-    },
-    datePicker: {
-        flex: 0.4,
-        width: 275
+        paddingBottom: 20,
+        fontFamily: 'myriad-pro-regular',
+        color: '#EEBE2E',
+        marginLeft: 20
     },
     button: {
-        width: 300,
+        width: Dimensions.get('window').width / 1.25,
         paddingTop: 30
     },
-    textInput: {
-        width: 200,
-        height: 40,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 1,
-        padding: 10
+    buttonContainer: {
+        alignItems: 'center'
+    },
+    title:{
+        marginTop: 40
+    },
+    flightDetailsContainer: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        alignItems: 'center'
+    },
+    searchContainer: {
+        backgroundColor: 'transparent',
+        borderBottomColor: 'transparent',
+        borderTopColor: 'transparent',
+        width: Dimensions.get('window').width / 1.25
+    },
+    searchInput: {
+        backgroundColor: 'transparent',
+        fontFamily: 'myriad-pro-regular',
+        color: "#231F20",
+        borderColor: '#A7A9AC',
+        borderWidth: 1,
+        height: Dimensions.get('window').height / 18,
+        fontSize: 20
     }
 });

@@ -16,19 +16,18 @@ export default class NavBar extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <TouchableOpacity style={styles.paddingLeft} onPress={() => Actions.pop()}>
+                <TouchableOpacity style={styles.backButtonContainer} onPress={() => Actions.pop()}>
                     <Icon
                         name="chevron-left"
-                        style={styles.backButtonIcon}
                         size={40}
                     />
                 </TouchableOpacity>
                 <View style={styles.logoContainer}>
-                    <Image
-                        source={require('../../assets/img/thumbnail-logo.png')}
-                    />
+                    <Image source={require('../../assets/img/thumbnail-logo.png')}/>
                 </View>
+                <View style={styles.hamburgerContainer}>
 
+                </View>
             </View>
         )
     }
@@ -41,13 +40,17 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         backgroundColor: '#EEBE2E'
     },
-    paddingLeft:{
-        paddingLeft: 10
+    backButtonContainer: {
+        paddingLeft: 10,
+        flex: 0.2,
+        alignItems: 'flex-start'
     },
     logoContainer: {
-        width: Dimensions.get('window').width,
+        flex: 0.6,
         alignItems: 'center',
-        marginLeft: -50,
         marginTop: 4
+    },
+    hamburgerContainer: {
+        flex: 0.2
     }
 });

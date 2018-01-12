@@ -37,7 +37,7 @@ export default class PostRequestScreen extends Component{
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.detailsTitle}>
+                <View style={styles.title}>
                     <Text style={styles.text}>Item details</Text>
                 </View>
 
@@ -78,7 +78,7 @@ export default class PostRequestScreen extends Component{
                     </View>
                 </View>
 
-                <View style={styles.detailsTitle}>
+                <View style={styles.title}>
                     <Text style={styles.text}>Travellers fee</Text>
                 </View>
                 <View style={styles.travellersFeeContainer}>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
        paddingRight: 20,
        alignItems: 'center'
     },
-    detailsTitle:{
+    title:{
         marginTop: 40
     },
     quantityInput: {
