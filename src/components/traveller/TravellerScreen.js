@@ -12,10 +12,10 @@ export default class TravellerScreen extends Component{
         return(
             <View style={styles.container}>
                 <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Post flight" onPress={() => Actions.postFlight()} />
+                    <Button style={styles.button} title="post flight" onPress={() => Actions.postFlight()} />
                 </View>
                 <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Choose request" onPress={() => Actions.chooseRequest()} />
+                    <Button style={styles.button} title="choose request" onPress={() => Actions.chooseRequest()} />
                 </View>
             </View>
         );

@@ -11,6 +11,8 @@ import PostRequestScreen from './src/components/buyer/PostRequestScreen'
 import ChooseRequestScreen from './src/components/traveller/ChooseRequestScreen'
 import PostFlightScreen from './src/components/traveller/PostFlightScreen'
 import NavBar from './src/components/NavBar'
+import SplashScreenNavBar from './src/components/SplashScreenNavBar'
+import ProfileScreen from './src/components/ProfileScreen'
 
 
 export default class App extends Component {
@@ -36,15 +38,16 @@ export default class App extends Component {
     return (
         <Router>
           <Scene key="root">
-            <Scene key="splash" component={SplashScreen} />
-            <Scene key="decision" component={DecisionScreen}/>
+            <Scene key="splash" component={SplashScreen} navBar={SplashScreenNavBar}/>
+            <Scene key="decision" component={DecisionScreen} navBar={NavBar}/>
             <Scene key="buyer" component={BuyerScreen} navBar={NavBar}/>
             <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
             <Scene key="authentication" component={AuthenticationScreen} navBar={NavBar}/>
             <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar}/>
             <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
             <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
-            <Scene key="postFlight" component={PostFlightScreen} navBar={NavBar} initial={true}/>
+            <Scene key="postFlight" component={PostFlightScreen} navBar={NavBar}/>
+            <Scene key="profile" component={ProfileScreen} navBar={NavBar} initial={true}/>
           </Scene>
         </Router>
     );

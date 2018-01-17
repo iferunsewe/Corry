@@ -32,7 +32,7 @@ export default class ChooseTravellerScreen extends Component {
                     style={styles.destinationContainer}
                     fontFamily='myriad-pro-regular'
                 >
-                    <Text style={[styles.text, styles.destinationTitle]}>Enter destination</Text>
+                    <Text style={[styles.text, styles.destinationTitle]}>enter destination</Text>
                     <TextInput
                         title="traveller's destination"
                         placeholder="London, Lagos, New York..."
@@ -42,7 +42,7 @@ export default class ChooseTravellerScreen extends Component {
                     />
                 </View>
                 <View style={styles.travellersContainer}>
-                    <Text style={styles.text}>Travellers</Text>
+                    <Text style={[styles.text, styles.travellersTitle]}>travellers</Text>
                     <List containerStyle={styles.travellersList}>
                         {
                             dummyTravellers.map((l, i) => (
@@ -119,5 +119,8 @@ const styles = StyleSheet.create({
     destinationTitle:{
         marginTop: 40,
         marginBottom: 20
+    },
+    travellersTitle: {
+        marginTop: 40
     }
 });

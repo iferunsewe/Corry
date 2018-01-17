@@ -12,10 +12,10 @@ export default class BuyerScreen extends Component{
         return(
             <View style={styles.container}>
                 <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Post a request" onPress={() => Actions.postRequest()} />
+                    <Button style={styles.button} title="post a request" onPress={() => Actions.postRequest()} />
                 </View>
                 <View style={styles.decisionSection}>
-                    <Button style={styles.button} title="Choose traveller" onPress={() => Actions.chooseTraveller()} />
+                    <Button style={styles.button} title="choose traveller" onPress={() => Actions.chooseTraveller()} />
                 </View>
             </View>
         );

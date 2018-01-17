@@ -38,7 +38,7 @@ export default class PostRequestScreen extends Component{
         return(
             <View style={styles.container}>
                 <View style={styles.title}>
-                    <Text style={styles.text}>Item details</Text>
+                    <Text style={styles.text}>item details</Text>
                 </View>
 
                 <View style={styles.detailsContainer}>
@@ -65,7 +65,7 @@ export default class PostRequestScreen extends Component{
                         keyboardType="numeric"
                     />
                     <View style={styles.quantityInputContainer}>
-                        <Text style={styles.quantityText}>Quantity: </Text>
+                        <Text style={styles.quantityText}>quantity: </Text>
                         <TextInput
                             title="quantity"
                             style={styles.quantityInput}
@@ -79,7 +79,7 @@ export default class PostRequestScreen extends Component{
                 </View>
 
                 <View style={styles.title}>
-                    <Text style={styles.text}>Travellers fee</Text>
+                    <Text style={styles.text}>travellers fee</Text>
                 </View>
                 <View style={styles.travellersFeeContainer}>
                     <Text style={styles.travellersFee}>£{this.calculateTravellersFee()}</Text>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     text: {
-        fontSize: 25,
+        fontSize: 20,
         paddingBottom: 20,
         fontFamily: 'myriad-pro-regular',
         color: '#EEBE2E',

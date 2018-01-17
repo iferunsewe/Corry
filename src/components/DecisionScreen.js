@@ -15,7 +15,7 @@ export default class DecisionScreen extends Component {
             <View style={styles.container}>
                 <Button containerViewStyle={styles.button}
                         buttonStyle={styles.button}
-                        title="Traveller"
+                        title="traveller"
                         onPress={() => Actions.traveller()}
                         icon={{name: 'aircraft-take-off', type: 'entypo'}}
                         fontFamily='myriad-pro-regular'
@@ -23,7 +23,7 @@ export default class DecisionScreen extends Component {
 
                 <Button containerViewStyle={styles.button}
                         buttonStyle={styles.button}
-                        title="Buyer"
+                        title="buyer"
                         onPress={() => Actions.buyer()}
                         icon={{name: 'shopping-cart', type: 'foundation'}}
                         fontFamily='myriad-pro-regular'

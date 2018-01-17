@@ -14,7 +14,6 @@ export default class RequestSection extends Component {
     }
 
     render() {
-        console.log(this.props.avatarUrl);
         return(
             <ListItem
                 containerStyle={styles.container}
@@ -51,15 +50,12 @@ const styles = {
         paddingLeft: 20
     },
     avatarStyle: {
-        width: 100,
-        height: 100
+        width: 80,
+        height: 80
     },
     avatarOverlayContainer:{
         backgroundColor: 'transparent',
         flexDirection: 'row',
         alignItems: 'flex-start'
-    },
-    subtitleView: {
-
     }
 };
