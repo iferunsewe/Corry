@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: 100,
         width: 100,
-        borderRadius: 10
+        borderRadius: 5
     },
     avatarContainer: {
         width: "100%",
