@@ -26,6 +26,8 @@ export default class ActivitySection extends Component{
                               </View>
                           </View>
                       }
+                      rightTitle="view trip"
+                      rightTitleStyle={styles.viewTripText}
             >
             </ListItem>
         )
