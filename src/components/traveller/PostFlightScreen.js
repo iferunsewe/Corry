@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     Dimensions,
-    Image
+    Image,
+    Keyboard
 } from 'react-native';
 import { Button, SearchBar, Icon} from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
@@ -20,14 +21,10 @@ export default class PostFlightScreen extends Component{
         }
     }
 
-    componentWillMount(){
-        // Displays login screen before showing this screen
-        // Actions.authentication();
-    }
-
     displayFlightFound(){
         if(this.state.showResults){
-            setTimeout(() => {this.setState({showLoadingIcon: false})}, 1000)
+            Keyboard.dismiss();
+            setTimeout(() => {this.setState({showLoadingIcon: false})}, 1000);
             return <View>
                 <View style={styles.title}>
                     <Text style={styles.text}>flight found</Text>

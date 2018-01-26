@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
 const dummyRequests = [
     {
-        name: 'Converse Trainers',
+        name: 'Converse All Stars',
         location: 'London',
         price: '£50',
         travellersFee: '£5',

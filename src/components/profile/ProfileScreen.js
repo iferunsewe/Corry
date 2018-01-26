@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         flex: 0.3
     },
     reviewsContainer: {
-        flex: 0.3
+        flex: 0.
     }
 });
 
@@ -134,7 +134,7 @@ const dummyReviews = [
     {
         date: '2017-12-20T12:59-0500',
         reviewTitle: 'Ife was a pleasure!',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada sit amet tortor eu euismod. Duis at massa non dolor sollicitudin tempor nec in purus.',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada sit amet tortor eu euismod. Duis at massa non dolor sollicitudin tempor nec in purus. Quisque in neque vel dolor consequat facilisis ac nec risus.',
         rating: 4,
         item: 'Converse trainers',
         avatarUrl: require('../../../assets/img/review-girl.png')

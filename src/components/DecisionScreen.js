@@ -19,14 +19,15 @@ export default class DecisionScreen extends Component {
                         onPress={() => Actions.traveller()}
                         icon={{name: 'aircraft-take-off', type: 'entypo'}}
                         fontFamily='myriad-pro-regular'
+                        fontSize={20}
                 />
-
-                <Button containerViewStyle={styles.button}
+                <Button containerViewStyle={[styles.button, styles.secondButton]}
                         buttonStyle={styles.button}
                         title="buyer"
                         onPress={() => Actions.buyer()}
                         icon={{name: 'shopping-cart', type: 'foundation'}}
                         fontFamily='myriad-pro-regular'
+                        fontSize={20}
                 />
             </View>
         );
@@ -40,22 +41,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    text: {
-        fontSize: 64
-    },
-    decisionSection: {
-        flex: 0.5,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonContainer: {
-        flex: 0.5
-    },
     button:{
         width: Dimensions.get('window').width,
         flex: 1,
         backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    secondButton: {
+        borderTopColor: 'white',
+        borderTopWidth: 1
     }
 });
