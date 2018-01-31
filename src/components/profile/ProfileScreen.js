@@ -21,6 +21,7 @@ export default class ProfileScreen extends Component{
                     <View style={[styles.tripDetails, styles.space]}>
                         <Text style={styles.numberOfTrips}>{this.props.numberOfTrips || defaultProfile.numberOfTrips} trips | </Text>
                         <Text style={styles.rating}>{this.props.rating || defaultProfile.rating}</Text>
+                        <Image style={styles.star}source={require("../../../assets/img/full-star.png")}/>
                     </View>
                 </View>
                 <View style={styles.recentActivityContainer}>
@@ -94,7 +95,8 @@ const styles = StyleSheet.create({
     rating: {
         fontSize: 20,
         fontFamily: 'myriad-pro-regular',
-        color: '#EEBE2E'
+        color: '#EEBE2E',
+        marginRight: 5
     },
     title: {
         fontSize: 20,
@@ -107,7 +109,11 @@ const styles = StyleSheet.create({
         flex: 0.3
     },
     reviewsContainer: {
-        flex: 0.
+        flex: 0.3
+    },
+    star: {
+        width: 18,
+        height: 18
     }
 });
 

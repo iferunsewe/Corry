@@ -7,7 +7,6 @@ import {
     Image
 } from 'react-native';
 import Moment from 'react-moment';
-import ImageResizer from 'react-native-image-resizer'
 
 export default class ExchangeDetailsScreen extends Component{
     generateRandomFiveDigitNumber() {

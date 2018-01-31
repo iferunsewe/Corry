@@ -3,9 +3,11 @@ import {
     View,
     Text,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux';
 
 export default class TravellerSection extends Component {
     constructor() {
@@ -28,10 +30,15 @@ export default class TravellerSection extends Component {
                     <View style={styles.subtitleView}>
                         <Text style={styles.locationText}>{this.props.location}</Text>
                         <Text style={styles.nameText}>{this.props.name}</Text>
+                        <View style={styles.ratingContainer}>
+                            <Text style={styles.rating}>{this.props.rating}</Text>
+                            <Image style={styles.star}source={require("../../../assets/img/full-star.png")}/>
+                        </View>
                     </View>
                 }
                 subtitleContainerStyle={styles.subtitlesContainer}
                 fontFamily='myriad-pro-regular'
+                onPress={() => Actions.profile()}
             >
             </ListItem>
 
@@ -69,6 +76,25 @@ const styles = StyleSheet.create({
     locationText: {
         fontSize: 10,
         color: '#BCBEC0',
-        marginBottom: 2
+        marginBottom: 2,
+        fontFamily: 'myriad-pro-regular'
+    },
+    nameText: {
+        marginBottom: 2,
+        fontFamily: 'myriad-pro-regular'
+    },
+    rating: {
+        marginBottom: 2,
+        marginRight: 3,
+        fontFamily: 'myriad-pro-regular',
+        color: '#EEBE2E'
+    },
+    ratingContainer: {
+        flexDirection: 'row'
+    },
+    star: {
+        width: 10,
+        height: 10
+
     }
 });

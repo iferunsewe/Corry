@@ -7,7 +7,6 @@ import {
     Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import StyledInput from '../helpers/StyledInput';
 import { List, ListItem } from 'react-native-elements'
 import TravellerSection from '../traveller/TravellerSection';
 
@@ -35,7 +34,7 @@ export default class ChooseTravellerScreen extends Component {
                     <Text style={[styles.text, styles.destinationTitle]}>enter destination</Text>
                     <TextInput
                         title="traveller's destination"
-                        placeholder="London, Lagos, New York..."
+                        placeholder="london, lagos, new york..."
                         onChangeText={(text) => this.setState({destinationTextInput: text})}
                         value={this.state.destinationTextInput}
                         style={styles.destinationTextInput}
@@ -50,6 +49,7 @@ export default class ChooseTravellerScreen extends Component {
                                     name={l.name}
                                     location={l.location}
                                     avatarUrl={l.avatarUrl}
+                                    rating={l.rating}
                                     key={i}
                                 />
                             ))

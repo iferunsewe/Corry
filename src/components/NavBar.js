@@ -22,9 +22,9 @@ export default class NavBar extends Component {
                         size={40}
                     />
                 </TouchableOpacity>
-                <View style={styles.logoContainer}>
+                <TouchableOpacity style={styles.logoContainer} onPress={() => Actions.decision()}>
                     <Image source={require('../../assets/img/thumbnail-logo.png')}/>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.hamburgerContainer}>
 
                 </View>

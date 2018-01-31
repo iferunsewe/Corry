@@ -18,7 +18,7 @@ import ExchangeDetails from './src/components/ExchangeDetailsScreen'
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       fontLoaded: false
     }
@@ -44,11 +44,11 @@ export default class App extends Component {
             <Scene key="buyer" component={BuyerScreen} navBar={NavBar} />
             <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
             <Scene key="authentication" component={AuthenticationScreen} navBar={NavBar}/>
-            <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} initial={true}/>
+            <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} />
             <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
             <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
             <Scene key="postFlight" component={PostFlightScreen} navBar={NavBar} />
-            <Scene key="profile" component={ProfileScreen} navBar={NavBar} />
+            <Scene key="profile" component={ProfileScreen} navBar={NavBar} initial={true}/>
             <Scene key="exchangeDetails" component={ExchangeDetails} navBar={NavBar} />
           </Scene>
         </Router>
