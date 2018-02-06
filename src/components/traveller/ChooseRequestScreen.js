@@ -23,7 +23,7 @@ export default class ChooseRequestScreen extends Component{
         return(
             <View style={styles.container}>
                 <View style={styles.destinationContainer}>
-                    <Text style={styles.title}>destination</Text>
+                    <Text style={styles.title}>Destination</Text>
                     <View style={styles.destinationDetails}>
                         <Text style={styles.destinationHeader}>LAGOS</Text>
                         <Text style={styles.destinationSubtitle}>Murtala Muhammed International Airport</Text>
@@ -31,7 +31,7 @@ export default class ChooseRequestScreen extends Component{
                     </View>
                 </View>
                 <View style={styles.requestContainer}>
-                    <Text style={styles.title}>view requests</Text>
+                    <Text style={styles.title}>View requests</Text>
                     <List containerStyle={styles.requestsList}>
                         {
                             dummyRequests.map((l, i) => (

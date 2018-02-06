@@ -27,7 +27,7 @@ export default class PostFlightScreen extends Component{
             setTimeout(() => {this.setState({showLoadingIcon: false})}, 1000);
             return <View>
                 <View style={styles.title}>
-                    <Text style={styles.text}>flight found</Text>
+                    <Text style={styles.text}>Flight found</Text>
                 </View>
                 <View style={styles.flightFoundContainer}>
                     <View style={styles.airlineLogoContainer}>
@@ -82,7 +82,7 @@ export default class PostFlightScreen extends Component{
         return (
             <View style={styles.container}>
                 <View style={styles.title}>
-                    <Text style={styles.text}>enter flight number</Text>
+                    <Text style={styles.text}>Enter flight number</Text>
                 </View>
                 <View style={styles.flightDetailsContainer}>
                     <SearchBar

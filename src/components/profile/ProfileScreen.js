@@ -118,9 +118,9 @@ const styles = StyleSheet.create({
 });
 
 const defaultProfile = {
-    name: 'Ife Runsewe',
+    name: 'Timi Williams',
     location: 'London',
-    avatarUrl: require('../../../assets/img/ife-runsewe-profile.png'),
+    avatarUrl: require('../../../assets/img/timi-williams.png'),
     rating: 4.78,
     numberOfTrips: 17
 };
@@ -139,7 +139,7 @@ const dummyActivities = [
 const dummyReviews = [
     {
         date: '2017-12-20T12:59-0500',
-        reviewTitle: 'Ife was a pleasure!',
+        reviewTitle: 'Timi was a pleasure!',
         review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada sit amet tortor eu euismod. Duis at massa non dolor sollicitudin tempor nec in purus. Quisque in neque vel dolor consequat facilisis ac nec risus.',
         rating: 4,
         item: 'Converse trainers',

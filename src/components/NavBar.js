@@ -25,9 +25,13 @@ export default class NavBar extends Component {
                 <TouchableOpacity style={styles.logoContainer} onPress={() => Actions.decision()}>
                     <Image source={require('../../assets/img/thumbnail-logo.png')}/>
                 </TouchableOpacity>
-                <View style={styles.hamburgerContainer}>
-
-                </View>
+                <TouchableOpacity style={styles.hamburgerContainer}>
+                    <Icon
+                        name="menu"
+                        size={40}
+                        type="entypo"
+                    />
+                </TouchableOpacity>
             </View>
         )
     }

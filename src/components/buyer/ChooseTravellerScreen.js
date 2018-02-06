@@ -63,21 +63,21 @@ export default class ChooseTravellerScreen extends Component {
 
 const dummyTravellers = [
     {
-        name: 'John Smith',
+        name: 'Temi Jones',
         location: 'London',
-        avatarUrl: require('../../../assets/img/johnson.jpg'),
+        avatarUrl: require('../../../assets/img/temi-jones.png'),
         rating: 4.32
     },
     {
-        name: 'Thomas Shelby',
+        name: 'Ling Law',
         location: 'Birmingham',
-        avatarUrl: require('../../../assets/img/johnson.jpg'),
+        avatarUrl: require('../../../assets/img/ling-law.png'),
         rating: 5
     },
     {
-        name: 'Don Draper',
+        name: 'Jack Jones',
         location: 'New York',
-        avatarUrl: require('../../../assets/img/johnson.jpg'),
+        avatarUrl: require('../../../assets/img/jack-jones.png'),
         rating: 3.4
     },
 ];

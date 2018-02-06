@@ -38,7 +38,13 @@ export default class TravellerSection extends Component {
                 }
                 subtitleContainerStyle={styles.subtitlesContainer}
                 fontFamily='myriad-pro-regular'
-                onPress={() => Actions.profile()}
+                onPress={() => Actions.profile({
+                    userName: this.props.name,
+                    userLocation: this.props.location,
+                    avatarUrl: this.props.avatarUrl,
+                    rating: this.props.rating
+                }
+                )}
             >
             </ListItem>
 
