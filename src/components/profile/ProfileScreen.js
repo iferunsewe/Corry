@@ -146,6 +146,3 @@ const dummyReviews = [
         avatarUrl: require('../../../assets/img/review-girl.png')
     }
 ];
-
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
