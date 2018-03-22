@@ -12,6 +12,30 @@ import RequestSection from '../traveller/RequestSection';
 export default class ChooseRequestScreen extends Component{
     constructor(){
         super();
+        this.state = {
+            requests: []
+        }
+    }
+
+    componentDidMount() {
+        fetch('http://192.168.0.19:8080/requests', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            return response.json();
+        })
+            .then(responseData => {
+                this.setState({requests: responseData});
+                console.log(this.state.requests)
+                return responseData;
+            })
+            .catch(error => {
+                console.log(error)
+        })
+
     }
 
     componentWillMount(){
@@ -34,14 +58,14 @@ export default class ChooseRequestScreen extends Component{
                     <Text style={styles.title}>View requests</Text>
                     <List containerStyle={styles.requestsList}>
                         {
-                            dummyRequests.map((l, i) => (
+                            this.state.requests.map((l, i) => (
                                 <RequestSection
-                                    name={l.name}
-                                    location={l.location}
+                                    name={l['name']}
+                                    location={l['location']}
                                     key={i}
-                                    price={l.price}
-                                    travellersFee={l.travellersFee}
-                                    avatarUrl={l.avatarUrl}
+                                    price={l['price']}
+                                    travellersFee={l['traveller_fee']}
+                                    avatarUrl={dummyRequests[i].avatarUrl}
                                 />
                             ))
                         }
