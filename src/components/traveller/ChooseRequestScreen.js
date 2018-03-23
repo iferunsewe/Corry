@@ -29,7 +29,6 @@ export default class ChooseRequestScreen extends Component{
         })
             .then(responseData => {
                 this.setState({requests: responseData});
-                console.log(this.state.requests)
                 return responseData;
             })
             .catch(error => {
