@@ -24,7 +24,6 @@ export default class RequestSection extends Component {
                 subtitle={
                     <View style={styles.subtitleView}>
                         <Text style={styles.text}>{this.props.name}</Text>
-                        <Text style={styles.text}>{this.props.location}</Text>
                         <Text style={styles.text}>Price: {this.props.price}</Text>
                         <Text style={styles.text}>Fee: {this.props.travellersFee}</Text>
                     </View>

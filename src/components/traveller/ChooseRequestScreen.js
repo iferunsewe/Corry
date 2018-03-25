@@ -13,12 +13,22 @@ export default class ChooseRequestScreen extends Component{
     constructor(){
         super();
         this.state = {
-            requests: []
+            requests: [],
+            destination: {}
         }
     }
 
     componentDidMount() {
-        fetch('http://192.168.0.19:8080/requests', {
+        this.fetchDestination()
+    }
+
+    componentWillMount(){
+        // Displays login screen before showing this screen
+        // Actions.authentication();
+    }
+
+    fetchDestination(name) {
+        fetch('http://192.168.0.19:8080/location/1', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -28,18 +38,12 @@ export default class ChooseRequestScreen extends Component{
             return response.json();
         })
             .then(responseData => {
-                this.setState({requests: responseData});
+                this.setState({destination: responseData, requests: responseData['requests']});
                 return responseData;
             })
             .catch(error => {
                 console.log(error)
-        })
-
-    }
-
-    componentWillMount(){
-        // Displays login screen before showing this screen
-        // Actions.authentication();
+            })
     }
 
     render() {
@@ -48,7 +52,7 @@ export default class ChooseRequestScreen extends Component{
                 <View style={styles.destinationContainer}>
                     <Text style={styles.title}>Destination</Text>
                     <View style={styles.destinationDetails}>
-                        <Text style={styles.destinationHeader}>LAGOS</Text>
+                        <Text style={styles.destinationHeader}>{this.state.destination['name']}</Text>
                         <Text style={styles.destinationSubtitle}>Murtala Muhammed International Airport</Text>
                         <Image source={require('../../../assets/img/nigerian-flag.png')} />
                     </View>
@@ -60,7 +64,6 @@ export default class ChooseRequestScreen extends Component{
                             this.state.requests.map((l, i) => (
                                 <RequestSection
                                     name={l['name']}
-                                    location={l['location']}
                                     key={i}
                                     price={l['price']}
                                     travellersFee={l['traveller_fee']}
