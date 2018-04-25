@@ -28,7 +28,7 @@ export default class ChooseRequestScreen extends Component{
     }
 
     fetchDestination(name) {
-        fetch('http://192.168.0.19:8080/location/2', {
+        fetch('http://10.0.110.242:8080/location/2', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

@@ -6,6 +6,7 @@ import {
     Dimensions
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
+import { FormattedCurrency } from 'react-native-globalize';
 
 
 export default class RequestSection extends Component {
@@ -24,8 +25,8 @@ export default class RequestSection extends Component {
                 subtitle={
                     <View style={styles.subtitleView}>
                         <Text style={styles.text}>{this.props.name}</Text>
-                        <Text style={styles.text}>Price: {this.props.price}</Text>
-                        <Text style={styles.text}>Fee: {this.props.travellersFee}</Text>
+                        <Text style={styles.text}>Price: <FormattedCurrency currency="GBP" value={this.props.price}/></Text>
+                        <Text style={styles.text}>Fee: <FormattedCurrency currency="GBP" value={this.props.travellersFee}/></Text>
                     </View>
                 }
             >
