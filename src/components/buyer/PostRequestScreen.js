@@ -34,6 +34,10 @@ export default class PostRequestScreen extends Component{
         return calculation.toFixed(2);
     }
 
+    submitRequest(){
+
+    }
+
     render() {
         return(
             <View style={styles.container}>

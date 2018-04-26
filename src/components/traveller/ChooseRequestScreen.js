@@ -8,13 +8,15 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { List, ListItem } from 'react-native-elements'
 import RequestSection from '../traveller/RequestSection';
+import { getLocation } from '../../actions/index';
 
 export default class ChooseRequestScreen extends Component{
     constructor(){
         super();
         this.state = {
             requests: [],
-            destination: {}
+            destination: {},
+            airport: ''
         }
     }
 
@@ -28,23 +30,16 @@ export default class ChooseRequestScreen extends Component{
     }
 
     fetchDestination(name) {
-        fetch('http://10.0.110.242:8080/location/2', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then(response => {
-            return response.json();
+        getLocation().then(responseData => {
+            this.setState({
+                destination: responseData,
+                requests: responseData['requests'],
+                airport: responseData['airports'][0]['name']
+            })
         })
-            .then(responseData => {
-                console.log(responseData)
-                this.setState({destination: responseData, requests: responseData['requests']});
-                return responseData;
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     render() {
@@ -54,7 +49,7 @@ export default class ChooseRequestScreen extends Component{
                     <Text style={styles.title}>Destination</Text>
                     <View style={styles.destinationDetails}>
                         <Text style={styles.destinationHeader}>{this.state.destination['name']}</Text>
-                        <Text style={styles.destinationSubtitle}>Murtala Muhammed International Airport</Text>
+                        <Text style={styles.destinationSubtitle}>{this.state.airport}</Text>
                         <Image source={require('../../../assets/img/nigerian-flag.png')} />
                     </View>
                 </View>
