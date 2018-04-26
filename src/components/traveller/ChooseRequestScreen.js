@@ -15,13 +15,13 @@ export default class ChooseRequestScreen extends Component{
         super();
         this.state = {
             requests: [],
-            destination: {},
+            location: {},
             airport: ''
         }
     }
 
     componentDidMount() {
-        this.fetchDestination()
+        this.fetchLocation()
     }
 
     componentWillMount(){
@@ -29,10 +29,10 @@ export default class ChooseRequestScreen extends Component{
         // Actions.authentication();
     }
 
-    fetchDestination(name) {
+    fetchLocation(name) {
         getLocation().then(responseData => {
             this.setState({
-                destination: responseData,
+                location: responseData,
                 requests: responseData['requests'],
                 airport: responseData['airports'][0]['name']
             })
@@ -45,11 +45,11 @@ export default class ChooseRequestScreen extends Component{
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.destinationContainer}>
+                <View style={styles.locationContainer}>
                     <Text style={styles.title}>Destination</Text>
-                    <View style={styles.destinationDetails}>
-                        <Text style={styles.destinationHeader}>{this.state.destination['name']}</Text>
-                        <Text style={styles.destinationSubtitle}>{this.state.airport}</Text>
+                    <View style={styles.locationDetails}>
+                        <Text style={styles.locationHeader}>{this.state.location['name']}</Text>
+                        <Text style={styles.locationSubtitle}>{this.state.airport}</Text>
                         <Image source={require('../../../assets/img/nigerian-flag.png')} />
                     </View>
                 </View>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         color: '#EEBE2E'
     },
-    destinationTitle: {
+    locationTitle: {
         fontSize: 18,
         paddingBottom: 20
     },
@@ -95,25 +95,25 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column'
     },
-    destinationContainer: {
+    locationContainer: {
         flex: 0.2
     },
     requestContainer: {
         flex: 0.8
     },
-    destinationHeader: {
+    locationHeader: {
         fontSize: 25,
         fontFamily: 'myriad-pro-regular',
         color: '#A7A9AC'
     },
-    destinationSubtitle: {
+    locationSubtitle: {
         width: 150,
         fontSize: 11,
         fontFamily: 'myriad-pro-regular',
         color: '#A7A9AC',
         marginLeft: 5
     },
-    destinationDetails: {
+    locationDetails: {
         marginLeft: 20,
         flexDirection: 'row'
     }
