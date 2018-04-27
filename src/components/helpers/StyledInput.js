@@ -10,16 +10,13 @@ import {
 export default class StyledInput extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            textInput: ''
-        };
     }
 
     render() {
         return(
                 <TextInput title={this.props.title || ''}
-                           onChangeText={(text) => this.setState({textInput: text})}
-                           value={this.state.textInput}
+                           onChangeText={this.props.onChangeText}
+                           value={this.props.value}
                            style={styles.textInput}
                            placeholder={this.props.placeholder || ''}
                            secureTextEntry={this.props.secureTextEntry || false}
