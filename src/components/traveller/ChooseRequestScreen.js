@@ -46,7 +46,7 @@ export default class ChooseRequestScreen extends Component{
         if(dummyRequests[i]){
             return dummyRequests[i].avatarUrl
         } else {
-            return require('../../../assets/img/iphone-7.png')
+            return require('../../../assets/img/crunchy_ginger_biscuits.png')
         }
     }
 
