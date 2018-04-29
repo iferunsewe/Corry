@@ -42,6 +42,14 @@ export default class ChooseRequestScreen extends Component{
         })
     }
 
+    avatarUrl(i){
+        if(dummyRequests[i]){
+            return dummyRequests[i].avatarUrl
+        } else {
+            return require('../../../assets/img/iphone-7.png')
+        }
+    }
+
     render() {
         return(
             <View style={styles.container}>
@@ -63,7 +71,7 @@ export default class ChooseRequestScreen extends Component{
                                     key={i}
                                     price={l['price']}
                                     travellersFee={l['traveller_fee']}
-                                    avatarUrl={dummyRequests[i].avatarUrl}
+                                    avatarUrl={this.avatarUrl(i)}
                                 />
                             ))
                         }
@@ -141,5 +149,5 @@ const dummyRequests = [
         price: '£599',
         travellersFee: '£59.50',
         avatarUrl: require('../../../assets/img/iphone-7.png')
-    },
+    }
 ];

@@ -14,21 +14,21 @@ import {
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
-import Picker from 'react-native-universal-picker';
 
 export default class PostRequestScreen extends Component{
     constructor(){
         super();
         this.state = {
-            quantity: "1",
+            quantity: 1,
             price: 0,
             itemLocation: "",
             locations: [],
             name: '',
-            shop: ''
+            shop: '',
+            link: ''
         }
     }
-    
+
 
     componentWillMount(){
         // Displays login screen before showing this screen
@@ -56,13 +56,16 @@ export default class PostRequestScreen extends Component{
             name: this.state.name,
             price: this.state.price,
             location_id: 2,
-            traveller_fee: this.calculateTravellersFee(),
-            user_id: 1
+            user_id: 1,
+            shop: this.state.shop,
+            quantity: this.state.quantity,
+            link: this.state.link
+
         }).then(responseData => {
            console.log(responseData)
         }).catch(error => {
             console.log(error)
-        })
+        });
         Actions.chooseTraveller()
     }
 
@@ -79,12 +82,9 @@ export default class PostRequestScreen extends Component{
                         placeholder="which country?"
                         onChangeText={(text) => this.setState({itemLocation: text})}
                         style={styles.priceTextInput}
-                        keyboardType="numeric"
                     />
                     {/*<Picker*/}
-                        {/*title="which country?"*/}
-                        {/*prompt="which country?"*/}
-                        {/*style={styles.locationPicker}*/}
+                        {/*placeholder="which country?"*/}
                     {/*>*/}
                         {/*{*/}
                             {/*this.state.locations.map((location, i) =>*/}
@@ -104,6 +104,12 @@ export default class PostRequestScreen extends Component{
                         onChangeText={(text) => this.setState({shop: text})}
                         value={this.state.shop}
                     />
+                    <StyledInput
+                        title="can we find your item on internet? enter url"
+                        placeholder="can we find your item on internet? enter url"
+                        onChangeText={(text) => this.setState({link: text})}
+                        value={this.state.link}
+                    />
                     <TextInput
                         title="how much is it?"
                         placeholder="how much is it? (£)"
@@ -120,7 +126,6 @@ export default class PostRequestScreen extends Component{
                             maxLength={3}
                             keyboardType="numeric"
                             defaultValue="1"
-                            value={this.state.quantity}
                             onChangeText={(quantity) => this.setState({quantity})}
                         />
                     </View>
