@@ -20,6 +20,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "auth0-js": "9.3.0",
     "expo": "^22.0.4",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
