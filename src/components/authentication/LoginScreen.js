@@ -11,7 +11,7 @@ import StyledInput from '../helpers/StyledInput';
 import { Button } from 'react-native-elements';
 import { loginUser } from '../../actions/index';
 
-const ACCESS_TOKEN = 'access_token'
+const ACCESS_TOKEN = 'access_token';
 
 export default class LoginScreen extends Component {
     constructor(props) {

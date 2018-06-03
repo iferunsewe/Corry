@@ -1,5 +1,7 @@
+const API_ENDPOINT = 'http://192.168.0.11:3000';
+
 export function getLocation() {
-    return fetch('http://192.168.0.19:8080/location/2', {
+    return fetch(API_ENDPOINT + '/location/2', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -11,7 +13,7 @@ export function getLocation() {
 }
 
 export function getLocations(){
-    return fetch('http://192.168.0.19:8080/location', {
+    return fetch(API_ENDPOINT + '/location', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -24,7 +26,7 @@ export function getLocations(){
 
 export function createRequest(request){
     console.log(request)
-    return fetch('http://192.168.1.103:8080/requests', {
+    return fetch(API_ENDPOINT + '/requests', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -38,7 +40,7 @@ export function createRequest(request){
 
 export function registerUser(user){
     console.log(user)
-    return fetch('http://192.168.1.103:8080/users', {
+    return fetch(API_ENDPOINT + '/users', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -52,7 +54,7 @@ export function registerUser(user){
 
 export function loginUser(user){
     console.log(user)
-    return fetch('http://192.168.1.103:8080/users/sign_in', {
+    return fetch(API_ENDPOINT + '/users/sign_in', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
