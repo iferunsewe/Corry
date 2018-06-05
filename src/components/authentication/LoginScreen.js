@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     TextInput,
-    Dimensions
+    Dimensions,
+    AsyncStorage
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
@@ -24,14 +25,43 @@ export default class LoginScreen extends Component {
         }
     }
 
+    async storeToken(accessToken){
+        try {
+            await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+            this.getToken();
+        } catch(error) {
+            console.log("Something went wrong: " + error)
+        }
+    }
+
+    async getToken(){
+        try {
+            var token = await AsyncStorage.getItem(ACCESS_TOKEN);
+            console.log("token is: " + token)
+        } catch(error) {
+            console.log("Something went wrong: " + error)
+        }
+    }
+
+    async removeToken(){
+        try {
+            await AsyncStorage.removeItem(ACCESS_TOKEN);
+            this.getToken()
+        } catch(error) {
+            console.log("Something went wrong: " + error)
+        }
+    }
+
     onLoginPressed(){
         loginUser({
             email: this.state.email,
             password: this.state.password
         }).then(responseData => {
             console.log(responseData)
-            // Actions.decision()
+            this.storeToken(responseData["access_token"]);
+            Actions.decision()
         }).catch(error => {
+            this.removeToken();
             console.log(error)
         })
     }
@@ -53,7 +83,7 @@ export default class LoginScreen extends Component {
                         title="password"
                         placeholder="password"
                         secureTextEntry={true}
-                        onChangeText={(val) => this.setState({passwordConfirmation: val})}
+                        onChangeText={(val) => this.setState({password: val})}
                         value={this.state.passwordConfirmation}
                     />
                     <Button title='login'
