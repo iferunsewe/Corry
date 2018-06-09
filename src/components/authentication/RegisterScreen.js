@@ -32,8 +32,7 @@ export default class RegisterScreen extends Component {
             password_confirmation: this.state.passwordConfirmation,
             location_id: 1
         }).then(responseData => {
-            console.log(responseData)
-            // Actions.decision()
+            console.log(responseData);
         }).catch(error => {
             console.log(error)
         })
@@ -42,9 +41,6 @@ export default class RegisterScreen extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.title}>
-                    <Text style={styles.text}>register</Text>
-                </View>
                 <View style={styles.registrationDetailsContainer}>
                     <StyledInput
                         title="name"
@@ -66,8 +62,8 @@ export default class RegisterScreen extends Component {
                         value={this.state.password}
                     />
                     <StyledInput
-                        title="password"
-                        placeholder="password"
+                        title="passwordConfirmation"
+                        placeholder="password confirmation"
                         secureTextEntry={true}
                         onChangeText={(val) => this.setState({passwordConfirmation: val})}
                         value={this.state.passwordConfirmation}
@@ -109,6 +105,7 @@ const styles = {
     registrationDetailsContainer:{
         paddingLeft: 20,
         paddingRight: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 80
     }
 }

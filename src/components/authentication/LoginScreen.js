@@ -71,9 +71,6 @@ export default class LoginScreen extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.title}>
-                    <Text style={styles.text}>login</Text>
-                </View>
                 <View style={styles.loginDetailsContainer}>
                     <StyledInput
                         title="email"
@@ -124,13 +121,11 @@ const styles = {
         color: '#EEBE2E',
         marginLeft: 20
     },
-    title:{
-        marginTop: 40
-    },
     loginDetailsContainer:{
         paddingLeft: 20,
         paddingRight: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 80
     },
     errorContainer: {
         paddingTop: 10,

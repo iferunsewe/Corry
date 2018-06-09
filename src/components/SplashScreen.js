@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 export default class SplashScreen extends Component {
     componentDidMount(){
         this.timeoutHandle = setTimeout(()=>{
-            Actions.decision();
+            Actions.login();
         }, 2000);
     }
 

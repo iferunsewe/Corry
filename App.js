@@ -46,8 +46,8 @@ export default class App extends Component {
               <Scene key="decision" component={DecisionScreen} navBar={NavBar} />
               <Scene key="buyer" component={BuyerScreen} navBar={NavBar} />
               <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
-              <Scene key="registration" component={RegisterScreen} navBar={NavBar} />
-              <Scene key="login" component={LoginScreen} navBar={NavBar} initial={true}/>
+              <Scene key="registration" component={RegisterScreen} navBar={NavBar} initial={true} />
+              <Scene key="login" component={LoginScreen} navBar={NavBar} />
               <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} />
               <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
               <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
