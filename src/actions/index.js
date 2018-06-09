@@ -53,7 +53,6 @@ export function registerUser(user){
 }
 
 export function loginUser(user){
-    console.log(user)
     return fetch(API_ENDPOINT + '/users/sign_in', {
         method: 'POST',
         headers: {
@@ -62,6 +61,10 @@ export function loginUser(user){
         },
         body: JSON.stringify(user)
     }).then(response => {
-        return response.json();
+        var res = response;
+        if(!res.ok){
+            throw res
+        }
+        return res.json();
     })
 }

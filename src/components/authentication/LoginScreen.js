@@ -57,12 +57,14 @@ export default class LoginScreen extends Component {
             email: this.state.email,
             password: this.state.password
         }).then(responseData => {
-            console.log(responseData)
             this.storeToken(responseData["access_token"]);
             Actions.decision()
         }).catch(error => {
-            this.removeToken();
-            console.log(error)
+            console.log(error);
+            error.json().then(error => {
+                this.setState({error: error["message"]});
+                this.removeToken();
+            })
         })
     }
 
@@ -95,6 +97,11 @@ export default class LoginScreen extends Component {
                             color="#231F20"
                     />
                 </View>
+                <View style={styles.errorContainer}>
+                    <Text style={styles.error}>
+                        {this.state.error}
+                    </Text>
+                </View>
             </View>
         )
     }
@@ -124,5 +131,16 @@ const styles = {
         paddingLeft: 20,
         paddingRight: 20,
         alignItems: 'center'
+    },
+    errorContainer: {
+        paddingTop: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
+        alignItems: 'center'
+    },
+    error: {
+        fontSize: 15,
+        color: 'red',
+        fontFamily: 'myriad-pro-regular'
     }
-}
+};
