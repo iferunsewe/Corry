@@ -57,11 +57,29 @@ export function loginUser(user){
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
     }).then(response => {
         var res = response;
+        if(!res.ok){
+            throw res
+        }
+        return res.json();
+    })
+}
+
+export function verifyUser(accessToken){
+    console.log("Token is: "  + accessToken);
+    return fetch (API_ENDPOINT + '/users/sessions/verify_access_token/' + accessToken, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        var res = response;
+        console.log(res);
         if(!res.ok){
             throw res
         }

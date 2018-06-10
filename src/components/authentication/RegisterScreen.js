@@ -108,4 +108,4 @@ const styles = {
         alignItems: 'center',
         marginTop: 80
     }
-}
+};
