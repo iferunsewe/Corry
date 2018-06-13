@@ -6,12 +6,32 @@ import {
     TouchableOpacity,
     View,
     Image ,
-    Dimensions
+    Dimensions,
+    AsyncStorage
 } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
 
+const ACCESS_TOKEN = 'access_token';
+
 export default class NavBar extends Component {
+    async removeToken(){
+        try {
+            var token = await AsyncStorage.getItem(ACCESS_TOKEN);
+            console.log("token is: " + token)
+            await AsyncStorage.removeItem(ACCESS_TOKEN);
+            var token = await AsyncStorage.getItem(ACCESS_TOKEN); // To check token has actually been deleted
+            console.log("new token is: " + token)
+        } catch(error) {
+            console.log("Something went wrong: " + error)
+        }
+    }
+
+    async logout(){
+        this.removeToken();
+        Actions.login()
+    }
+
 
     render(){
         return(
@@ -23,13 +43,13 @@ export default class NavBar extends Component {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.logoContainer} onPress={() => Actions.decision()}>
-                    <Image source={require('../../assets/img/thumbnail-logo.png')}/>
+                    <Image source={require('../../assets/img/thumbnail-logo.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.hamburgerContainer}>
+                <TouchableOpacity style={styles.hamburgerContainer} onPress={() => this.logout()}>
                     <Icon
-                        name="menu"
+                        name="logout"
                         size={40}
-                        type="entypo"
+                        type="material-community"
                     />
                 </TouchableOpacity>
             </View>
