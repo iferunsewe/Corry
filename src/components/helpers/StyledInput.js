@@ -20,6 +20,7 @@ export default class StyledInput extends Component {
                            style={styles.textInput}
                            placeholder={this.props.placeholder || ''}
                            secureTextEntry={this.props.secureTextEntry || false}
+                           textContentType={this.props.textContentType || 'none'}
                 />
         )
     }

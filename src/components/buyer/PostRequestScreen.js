@@ -11,6 +11,7 @@ import {
     Button,
     Slider
 } from 'react-native-elements';
+import RNPickerSelect from 'react-native-picker-select';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
@@ -21,11 +22,10 @@ export default class PostRequestScreen extends Component{
         this.state = {
             quantity: 1,
             price: 0,
-            itemLocation: "",
-            locations: [],
             name: '',
             shop: '',
-            link: ''
+            link: '',
+            location_id: 1
         }
     }
 
@@ -44,22 +44,17 @@ export default class PostRequestScreen extends Component{
         return fee;
     }
 
-    fetchLocations(){
-        getLocations().then(responseData => {
-            var locationNames = responseData.map(location =>location['name'])
-            this.setState({locations: locationNames})
-        })
-    }
-
     submitRequest(){
         createRequest({
             name: this.state.name,
             price: this.state.price,
-            location_id: 2,
-            user_id: 1,
             shop: this.state.shop,
             quantity: this.state.quantity,
-            link: this.state.link
+            link: this.state.link,
+            buyer_name: this.props.buyerName,
+            buyer_phone_number: this.props.buyerPhoneNumber,
+            buyer_email_address: this.props.buyerEmailAddress,
+            location_id: this.state.location_id
 
         }).then(responseData => {
            console.log(responseData)
@@ -77,21 +72,21 @@ export default class PostRequestScreen extends Component{
                 </View>
 
                 <View style={styles.detailsContainer}>
-                    <TextInput
-                        title="which country?"
-                        placeholder="which country?"
-                        onChangeText={(text) => this.setState({itemLocation: text})}
-                        style={styles.priceTextInput}
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'which country?',
+                            value: null,
+                        }}
+                        items={countries}
+                        onValueChange={(value) => {
+                        this.setState({
+                            location_id: value,
+                        });
+                    }}
+                        style={{...pickerSelectStyles}}
+                        hideIcon={true}
                     />
-                    {/*<Picker*/}
-                        {/*placeholder="which country?"*/}
-                    {/*>*/}
-                        {/*{*/}
-                            {/*this.state.locations.map((location, i) =>*/}
-                                {/*<Picker.Item key={i} label={location} value={i} />*/}
-                            {/*)*/}
-                        {/*}*/}
-                    {/*</Picker>*/}
+
                     <StyledInput
                         title="name of product"
                         placeholder="name"
@@ -223,6 +218,38 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         padding: 10,
         borderColor: '#E6E7E8',
-        marginBottom: 10
+        marginBottom: 10,
+        marginLeft: 10
     }
 });
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        width: Dimensions.get('window').width / 1.25,
+        height: Dimensions.get('window').height / 18,
+        borderWidth: 1.5,
+        borderRadius: 6,
+        padding: 10,
+        borderColor: '#E6E7E8',
+        marginBottom: 10,
+        fontSize: 15,
+        marginLeft: 16,
+        fontFamily: 'myriad-pro-regular'
+    }
+});
+
+const countries = [
+    {
+        label: 'UK',
+        value: 1,
+        name: 'United Kingdom',
+        id: '1'
+    },
+    {
+        label: 'Nigeria',
+        value: 2,
+        name: 'Nigeria',
+        id: '2'
+    }
+
+]
