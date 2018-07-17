@@ -7,11 +7,24 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import { FormattedCurrency } from 'react-native-globalize';
+import { Actions } from 'react-native-router-flux';
 
 
 export default class RequestSection extends Component {
     constructor() {
         super();
+    }
+
+    onPressListItem(){
+        Actions.request({
+            name: this.props.name,
+            price: this.props.price,
+            avatarUrl: this.props.avatarUrl,
+            travellersFee: this.props.travellersFee,
+            buyerName: this.props.buyerName,
+            buyerEmailAddress: this.props.buyerEmailAddress,
+            buyerPhoneNumber: this.props.buyerPhoneNumber
+        })
     }
 
     render() {
@@ -29,6 +42,7 @@ export default class RequestSection extends Component {
                         <Text style={styles.text}>Fee: <FormattedCurrency currency="GBP" value={this.props.travellersFee}/></Text>
                     </View>
                 }
+                onPress={() => this.onPressListItem()}
             >
             </ListItem>
 

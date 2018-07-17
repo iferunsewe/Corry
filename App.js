@@ -9,6 +9,7 @@ import RegisterScreen from './src/components/authentication/RegisterScreen'
 import LoginScreen from './src/components/authentication/LoginScreen'
 import ChooseTravellerScreen from './src/components/buyer/ChooseTravellerScreen'
 import PostRequestScreen from './src/components/buyer/PostRequestScreen'
+import RequestScreen from './src/components/traveller/RequestScreen'
 import BuyerInfoScreen from './src/components/buyer/BuyerInfoScreen'
 import ChooseRequestScreen from './src/components/traveller/ChooseRequestScreen'
 import PostFlightScreen from './src/components/traveller/PostFlightScreen'
@@ -51,8 +52,9 @@ export default class App extends Component {
               <Scene key="login" component={LoginScreen} navBar={NavBar} />
               <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} />
               <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
-              <Scene key="buyerInfoScreen" component={BuyerInfoScreen} navBar={NavBar} initial={true}/>
-              <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
+              <Scene key="buyerInfoScreen" component={BuyerInfoScreen} navBar={NavBar} />
+              <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} initial={true}/>
+              <Scene key="request" component={RequestScreen} navBar={NavBar} />
               <Scene key="postFlight" component={PostFlightScreen} navBar={NavBar} />
               <Scene key="profile" component={ProfileScreen} navBar={NavBar} />
               <Scene key="exchangeDetails" component={ExchangeDetails} navBar={NavBar} />

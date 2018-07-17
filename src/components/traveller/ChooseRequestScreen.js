@@ -71,7 +71,11 @@ export default class ChooseRequestScreen extends Component{
                                     key={i}
                                     price={l['price']}
                                     travellersFee={l['traveller_fee']}
+                                    id={l['id']}
                                     avatarUrl={this.avatarUrl(i)}
+                                    buyerName={l['buyer_name']}
+                                    buyerEmailAddress={l['buyer_email_address']}
+                                    buyerPhoneNumber={l['buyer_phone_number']}
                                 />
                             ))
                         }

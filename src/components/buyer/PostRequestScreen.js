@@ -75,12 +75,12 @@ export default class PostRequestScreen extends Component{
                     <RNPickerSelect
                         placeholder={{
                             label: 'which country?',
-                            value: null,
+                            value: null
                         }}
                         items={countries}
                         onValueChange={(value) => {
                         this.setState({
-                            location_id: value,
+                            location_id: value
                         });
                     }}
                         style={{...pickerSelectStyles}}
@@ -89,7 +89,7 @@ export default class PostRequestScreen extends Component{
 
                     <StyledInput
                         title="name of product"
-                        placeholder="name"
+                        placeholder="name of product"
                         onChangeText={(text) => this.setState({name: text})}
                         value={this.state.name}
                     />
