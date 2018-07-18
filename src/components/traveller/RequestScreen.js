@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     Image,
-    Dimensions
+    Dimensions,
+    ScrollView
 } from 'react-native';
 import ActivitySection from '../profile/ActivitySection';
 import ReviewSection from '../profile/ReviewSection';
@@ -14,7 +15,7 @@ export default class RequestScreen extends Component{
 
     render() {
         return(
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.mainDetailsContainer}>
                     <Image style={styles.itemPhoto} source={this.props.avatarUrl || defaultProfile.avatarUrl} />
                     <View style={styles.itemNameContainer}>
@@ -36,7 +37,7 @@ export default class RequestScreen extends Component{
                     <Text style={styles.title}>Additional info</Text>
                     <Text style={styles.additionalItemInfo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada sit amet tortor eu euismod. Duis at massa non dolor sollicitudin tempor nec in purus. Quisque in neque vel dolor consequat facilisis ac nec risus.</Text>
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
