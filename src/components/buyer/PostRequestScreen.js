@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Platform,
     TextInput,
-    Dimensions
+    Dimensions,
+    ScrollView
 } from 'react-native';
 import {
     Button,
@@ -66,7 +67,7 @@ export default class PostRequestScreen extends Component{
 
     render() {
         return(
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.title}>
                     <Text style={styles.text}>item details</Text>
                 </View>
@@ -140,7 +141,7 @@ export default class PostRequestScreen extends Component{
                         backgroundColor="#EEBE2E"
                         color="#231F20"
                 />
-            </View>
+            </ScrollView>
         );
     }
 }

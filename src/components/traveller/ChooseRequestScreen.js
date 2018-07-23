@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { List, ListItem } from 'react-native-elements'
@@ -52,7 +53,7 @@ export default class ChooseRequestScreen extends Component{
 
     render() {
         return(
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.locationContainer}>
                     <Text style={styles.title}>Destination</Text>
                     <View style={styles.locationDetails}>
@@ -81,7 +82,7 @@ export default class ChooseRequestScreen extends Component{
                         }
                     </List>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -89,8 +90,7 @@ export default class ChooseRequestScreen extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        justifyContent: 'center'
+        backgroundColor: '#fff'
     },
     title: {
         fontSize: 20,

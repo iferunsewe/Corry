@@ -100,6 +100,9 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginLeft: 20,
         color: '#EEBE2E'
+    },
+    moneyDetails: {
+        alignItems: 'center'
     }
 
 });
