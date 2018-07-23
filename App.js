@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Router, Scene} from 'react-native-router-flux';
 import { Font, AppLoading } from 'expo';
 import SplashScreen from './src/components/SplashScreen'
-import DecisionScreen from './src/components/DecisionScreen'
+import LaunchDecisionScreen from './src/components/LaunchDecisionScreen'
 import BuyerScreen from './src/components/buyer/BuyerScreen'
 import TravellerScreen from './src/components/traveller/TravellerScreen'
 import RegisterScreen from './src/components/authentication/RegisterScreen'
@@ -45,7 +45,7 @@ export default class App extends Component {
           <Router>
             <Scene key="root">
               <Scene key="splash" component={SplashScreen} navBar={SplashScreenNavBar} />
-              <Scene key="decision" component={DecisionScreen} navBar={NavBar} />
+              <Scene key="launchDecision" component={LaunchDecisionScreen} navBar={NavBar} initial={true}/>
               <Scene key="buyer" component={BuyerScreen} navBar={NavBar} />
               <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
               <Scene key="registration" component={RegisterScreen} navBar={NavBar} />
@@ -53,7 +53,7 @@ export default class App extends Component {
               <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} />
               <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
               <Scene key="buyerInfoScreen" component={BuyerInfoScreen} navBar={NavBar} />
-              <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} initial={true}/>
+              <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
               <Scene key="request" component={RequestScreen} navBar={NavBar} />
               <Scene key="postFlight" component={PostFlightScreen} navBar={NavBar} />
               <Scene key="profile" component={ProfileScreen} navBar={NavBar} />

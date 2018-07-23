@@ -16,6 +16,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
+import { ErrorText } from '../ErrorText'
 
 export default class PostRequestScreen extends Component{
     constructor(){
@@ -26,14 +27,9 @@ export default class PostRequestScreen extends Component{
             name: '',
             shop: '',
             link: '',
-            location_id: 1
+            location_id: 1,
+            error: ''
         }
-    }
-
-
-    componentWillMount(){
-        // Displays login screen before showing this screen
-        // Actions.authentication();
     }
 
     calculateTravellersFee(){
@@ -56,13 +52,36 @@ export default class PostRequestScreen extends Component{
             buyer_phone_number: this.props.buyerPhoneNumber,
             buyer_email_address: this.props.buyerEmailAddress,
             location_id: this.state.location_id
-
         }).then(responseData => {
-           console.log(responseData)
+            console.log(responseData['traveller_fee'])
+            Actions.request({
+                    name: responseData['name'],
+                    price: responseData['price'],
+                    shop: responseData['shop'],
+                    quantity: responseData['quantity'],
+                    link: responseData['link'],
+                    buyerName: responseData['buyer_name'],
+                    buyerPhoneNumber: responseData['buyer_phone_number'],
+                    buyerEmailAddress: responseData['buyer_email_address'],
+                    travellersFee: responseData['traveller_fee'],
+                    location: this.selectCountryById(this.state.location_id)['name']
+            })
         }).catch(error => {
+            this.setState({error: error["message"]});
             console.log(error)
         });
-        Actions.chooseTraveller()
+
+    }
+
+    selectCountryById(id){
+        return countries.find(country => {
+            return country['id'] === id
+        })
+    }
+
+    blankFieldsExist(){
+        return this.state.name == '' || this.state.shop == '' || this.state.price == 0;
+
     }
 
     render() {
@@ -106,25 +125,31 @@ export default class PostRequestScreen extends Component{
                         onChangeText={(text) => this.setState({link: text})}
                         value={this.state.link}
                     />
-                    <TextInput
-                        title="how much is it?"
-                        placeholder="how much is it? (£)"
-                        onChangeText={(price) => this.setState({price: price})}
-                        style={styles.priceTextInput}
-                        keyboardType="numeric"
-                        maxLength={5}
-                    />
-                    <View style={styles.quantityInputContainer}>
-                        <Text style={styles.quantityText}>quantity: </Text>
-                        <TextInput
-                            title="quantity"
-                            style={styles.quantityInput}
-                            maxLength={3}
-                            keyboardType="numeric"
-                            defaultValue="1"
-                            onChangeText={(quantity) => this.setState({quantity})}
-                        />
+                    <View style={styles.lastRowContainer}>
+                        <View style={styles.priceInputContainer}>
+                            <Text style={styles.quantityText}>price</Text>
+                            <TextInput
+                                title="how much is it?"
+                                placeholder="price? "
+                                onChangeText={(price) => this.setState({price: price})}
+                                style={[styles.priceTextInput, styles.priceInput]}
+                                keyboardType="numeric"
+                                maxLength={5}
+                            />
+                        </View>
+                        <View style={styles.quantityInputContainer}>
+                            <Text style={styles.quantityText}>quantity</Text>
+                            <TextInput
+                                title="quantity"
+                                style={styles.quantityInput}
+                                maxLength={3}
+                                keyboardType="numeric"
+                                defaultValue="1"
+                                onChangeText={(quantity) => this.setState({quantity})}
+                            />
+                        </View>
                     </View>
+
                 </View>
 
                 <View style={styles.title}>
@@ -140,6 +165,7 @@ export default class PostRequestScreen extends Component{
                         fontFamily="myriad-pro-regular"
                         backgroundColor="#EEBE2E"
                         color="#231F20"
+                        disabled={this.blankFieldsExist()}
                 />
             </ScrollView>
         );
@@ -173,6 +199,12 @@ const styles = StyleSheet.create({
     title:{
         marginTop: 40
     },
+    quantityInputContainer:{
+        width: Dimensions.get('window').width / 2.5
+    },
+    priceInputContainer:{
+        width: Dimensions.get('window').width / 2.5
+    },
     quantityInput: {
         width: Dimensions.get('window').width / 7,
         height: Dimensions.get('window').height / 18,
@@ -187,10 +219,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'myriad-pro-regular',
         color: '#EEBE2E',
-    },
-    quantityInputContainer:{
-        width: Dimensions.get('window').width / 1.25,
-        alignItems: 'flex-start'
     },
     travellersFee: {
         fontSize: 20,
@@ -221,6 +249,13 @@ const styles = StyleSheet.create({
         borderColor: '#E6E7E8',
         marginBottom: 10,
         marginLeft: 10
+    },
+    priceInput: {
+        width: Dimensions.get('window').width / 3
+    },
+    lastRowContainer: {
+        flexDirection: 'row',
+        width: Dimensions.get('window').width / 1.25
     }
 });
 
@@ -244,13 +279,13 @@ const countries = [
         label: 'UK',
         value: 1,
         name: 'United Kingdom',
-        id: '1'
+        id: 1
     },
     {
         label: 'Nigeria',
         value: 2,
         name: 'Nigeria',
-        id: '2'
+        id: 2
     }
 
 ]
