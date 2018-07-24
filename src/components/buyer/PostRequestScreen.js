@@ -6,7 +6,8 @@ import {
     Platform,
     TextInput,
     Dimensions,
-    ScrollView
+    ScrollView,
+    Image
 } from 'react-native';
 import {
     Button,
@@ -17,6 +18,7 @@ import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
 import ErrorText from '../helpers/ErrorText'
+import { ImagePicker } from 'expo';
 
 export default class PostRequestScreen extends Component{
     constructor(){
@@ -29,7 +31,8 @@ export default class PostRequestScreen extends Component{
             link: '',
             location_id: 1,
             error: '',
-            errorPresent: false
+            errorPresent: false,
+            image: null
         }
     }
 
@@ -86,7 +89,22 @@ export default class PostRequestScreen extends Component{
 
     }
 
+    async pickImage(){
+        var result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: true,
+            aspect: [4, 3],
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            this.setState({ image: result.uri });
+        }
+    };
+
     render() {
+        let { image } = this.state;
+
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.title}>
@@ -149,6 +167,21 @@ export default class PostRequestScreen extends Component{
                                 defaultValue="1"
                                 onChangeText={(quantity) => this.setState({quantity})}
                             />
+                        </View>
+                    </View>
+                    <View style={styles.imagePickerContainer}>
+                        <View style={styles.imagePickerSubContainer}>
+                            <Button
+                                title="pick image"
+                                onPress={() => this.pickImage()}
+                                style={styles.imagePicker}
+                                backgroundColor="#EEBE2E"
+                                color="#231F20"
+                                fontFamily="myriad-pro-regular"
+                            />
+                        </View>
+                        <View style={styles.imagePickerSubContainer}>
+                            {image && <Image source={{ uri: image }} style={styles.uploadedImage} />}
                         </View>
                     </View>
 
@@ -249,6 +282,23 @@ const styles = StyleSheet.create({
     lastRowContainer: {
         flexDirection: 'row',
         width: Dimensions.get('window').width / 1.25
+    },
+    imagePickerContainer: {
+        flexDirection: 'row',
+        width: Dimensions.get('window').width / 1.25,
+    },
+    imagePicker: {
+        alignSelf: 'flex-start',
+        marginLeft: -15,
+        width: Dimensions.get('window').width / 2.5
+    },
+    uploadedImage: {
+        width: 100,
+        height: 100,
+        alignSelf: 'flex-end'
+    },
+    imagePickerSubContainer: {
+        width: Dimensions.get('window').width / 2.5
     }
 });
 

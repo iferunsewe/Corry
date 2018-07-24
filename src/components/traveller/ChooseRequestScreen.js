@@ -68,7 +68,7 @@ export default class ChooseRequestScreen extends Component{
                         items={countries}
                         onValueChange={(value) => {
                             console.log("Changing location: " + value)
-      
+
                     }}
                         style={{...pickerSelectStyles}}
                         hideIcon={true}
@@ -76,7 +76,7 @@ export default class ChooseRequestScreen extends Component{
                     <View style={styles.locationDetails}>
                         <Text style={styles.locationHeader}>{this.state.location['name']}</Text>
                         <Text style={styles.locationSubtitle}>{this.state.airport}</Text>
-                        <Image source={this.state.flagImage} />
+                        <Image source={this.state.flagImage || require('../../../assets/img/british-flag.svg.png')} />
                     </View>
                 </View>
                 <View style={styles.requestContainer}>
