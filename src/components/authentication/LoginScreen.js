@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { Button } from 'react-native-elements';
 import { loginUser } from '../../actions/index';
-import ErrorText from '../ErrorText'
+import ErrorText from '../helpers/ErrorText'
 
 const ACCESS_TOKEN = 'access_token';
 

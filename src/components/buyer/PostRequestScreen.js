@@ -16,7 +16,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
-import ErrorText from '../ErrorText'
+import ErrorText from '../helpers/ErrorText'
 
 export default class PostRequestScreen extends Component{
     constructor(){
