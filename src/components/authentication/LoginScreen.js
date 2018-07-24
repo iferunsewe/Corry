@@ -11,6 +11,7 @@ import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { Button } from 'react-native-elements';
 import { loginUser } from '../../actions/index';
+import ErrorText from '../ErrorText'
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -21,7 +22,8 @@ export default class LoginScreen extends Component {
         this.state = {
             email: '',
             password: '',
-            error: ''
+            error: '',
+            errorPresent: false
         }
     }
 
@@ -57,12 +59,13 @@ export default class LoginScreen extends Component {
             email: this.state.email,
             password: this.state.password
         }).then(responseData => {
+            this.setState({error: '', errorPresent: false});
             this.storeToken(responseData["access_token"]);
             Actions.decision()
         }).catch(error => {
             console.log(error);
             error.json().then(error => {
-                this.setState({error: error["message"]});
+                this.setState({error: error["message"], errorPresent: true});
                 this.removeToken();
             })
         })
@@ -94,11 +97,7 @@ export default class LoginScreen extends Component {
                             color="#231F20"
                     />
                 </View>
-                <View style={styles.errorContainer}>
-                    <Text style={styles.error}>
-                        {this.state.error}
-                    </Text>
-                </View>
+                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
             </View>
         )
     }
@@ -126,16 +125,5 @@ const styles = {
         paddingRight: 20,
         alignItems: 'center',
         marginTop: 80
-    },
-    errorContainer: {
-        paddingTop: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        alignItems: 'center'
-    },
-    error: {
-        fontSize: 15,
-        color: 'red',
-        fontFamily: 'myriad-pro-regular'
     }
 };

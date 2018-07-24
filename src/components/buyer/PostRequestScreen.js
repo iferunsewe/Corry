@@ -16,7 +16,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
-import { ErrorText } from '../ErrorText'
+import ErrorText from '../ErrorText'
 
 export default class PostRequestScreen extends Component{
     constructor(){
@@ -28,7 +28,8 @@ export default class PostRequestScreen extends Component{
             shop: '',
             link: '',
             location_id: 1,
-            error: ''
+            error: '',
+            errorPresent: false
         }
     }
 
@@ -54,6 +55,7 @@ export default class PostRequestScreen extends Component{
             location_id: this.state.location_id
         }).then(responseData => {
             console.log(responseData['traveller_fee'])
+            this.setState({error: '', errorPresent: false});
             Actions.request({
                     name: responseData['name'],
                     price: responseData['price'],
@@ -67,8 +69,8 @@ export default class PostRequestScreen extends Component{
                     location: this.selectCountryById(this.state.location_id)['name']
             })
         }).catch(error => {
-            this.setState({error: error["message"]});
             console.log(error)
+            this.setState({error: error["message"], errorPresent: true});
         });
 
     }
@@ -167,6 +169,7 @@ export default class PostRequestScreen extends Component{
                         color="#231F20"
                         disabled={this.blankFieldsExist()}
                 />
+                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
             </ScrollView>
         );
     }

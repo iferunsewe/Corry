@@ -6,11 +6,17 @@ import {
 } from 'react-native';
 
 export default class ErrorText extends Component {
+    errorTextPresent(){
+        if(this.props.errorPresent){
+            return this.props.error || 'Something has gone wrong!'
+        }
+    }
+
     render() {
         return (
             <View style={styles.errorContainer}>
                 <Text style={styles.error}>
-                    {this.props.error || 'Something has gone wrong!'}
+                    {this.errorTextPresent()}
                 </Text>
             </View>
         )

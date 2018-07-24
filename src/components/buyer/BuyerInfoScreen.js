@@ -25,8 +25,11 @@ export default class BuyerInfoScreen extends Component {
     }
 
     postState (){
-        console.log(this.state)
         Actions.postRequest(this.state)
+    }
+
+    blankFieldsExist(){
+        return this.state.buyerName == '' || this.state.buyerPhoneNumber == '' || this.state.buyerEmailAddress == ''
     }
 
     render() {
@@ -66,6 +69,7 @@ export default class BuyerInfoScreen extends Component {
                         fontFamily="myriad-pro-regular"
                         backgroundColor="#EEBE2E"
                         color="#231F20"
+                        disabled={this.blankFieldsExist()}
                 />
             </View>
         )
