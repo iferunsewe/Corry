@@ -243,16 +243,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontFamily: 'myriad-pro-regular'
     },
-    locationPicker: {
-        width: Dimensions.get('window').width / 1.25,
-        height: Dimensions.get('window').height / 18,
-        borderWidth: 1.5,
-        borderRadius: 6,
-        padding: 10,
-        borderColor: '#E6E7E8',
-        marginBottom: 10,
-        marginLeft: 10
-    },
     priceInput: {
         width: Dimensions.get('window').width / 3
     },

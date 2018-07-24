@@ -4,12 +4,14 @@ import {
     Text,
     StyleSheet,
     Image,
-    ScrollView
+    ScrollView,
+    Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { List, ListItem } from 'react-native-elements'
 import RequestSection from '../traveller/RequestSection';
 import { getLocation } from '../../actions/index';
+import RNPickerSelect from 'react-native-picker-select';
 
 export default class ChooseRequestScreen extends Component{
     constructor(){
@@ -17,25 +19,23 @@ export default class ChooseRequestScreen extends Component{
         this.state = {
             requests: [],
             location: {},
-            airport: ''
+            airport: '',
+            flagImage: ''
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.fetchLocation()
     }
 
-    componentWillMount(){
-        // Displays login screen before showing this screen
-        // Actions.authentication();
-    }
-
-    fetchLocation(name) {
-        getLocation().then(responseData => {
+    fetchLocation(id) {
+        var id = id || 1;
+        getLocation(id).then(responseData => {
             this.setState({
                 location: responseData,
                 requests: responseData['requests'],
-                airport: responseData['airports'][0]['name']
+                airport: responseData['airports'][0]['name'],
+                flagImage: this.pickCountryFlag(responseData['id'])
             })
         })
         .catch(error => {
@@ -51,15 +51,32 @@ export default class ChooseRequestScreen extends Component{
         }
     }
 
+    pickCountryFlag(id){
+        return countries[id - 1].flagImage
+    }
+
     render() {
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.locationContainer}>
                     <Text style={styles.title}>Destination</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'which country?',
+                            value: null
+                        }}
+                        items={countries}
+                        onValueChange={(value) => {
+                            console.log("Changing location: " + value)
+      
+                    }}
+                        style={{...pickerSelectStyles}}
+                        hideIcon={true}
+                    />
                     <View style={styles.locationDetails}>
                         <Text style={styles.locationHeader}>{this.state.location['name']}</Text>
                         <Text style={styles.locationSubtitle}>{this.state.airport}</Text>
-                        <Image source={require('../../../assets/img/nigerian-flag.png')} />
+                        <Image source={this.state.flagImage} />
                     </View>
                 </View>
                 <View style={styles.requestContainer}>
@@ -132,6 +149,21 @@ const styles = StyleSheet.create({
 
 });
 
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        width: Dimensions.get('window').width / 1.25,
+        height: Dimensions.get('window').height / 18,
+        borderWidth: 1.5,
+        borderRadius: 6,
+        padding: 10,
+        borderColor: '#E6E7E8',
+        marginBottom: 20,
+        fontSize: 15,
+        marginLeft: 16,
+        fontFamily: 'myriad-pro-regular'
+    }
+});
+
 const dummyRequests = [
     {
         name: 'Converse All Stars',
@@ -154,4 +186,22 @@ const dummyRequests = [
         travellersFee: '£59.50',
         avatarUrl: require('../../../assets/img/iphone-7.png')
     }
+];
+
+const countries = [
+    {
+        label: 'London',
+        value: 1,
+        name: 'London',
+        id: 1,
+        flagImage: require('../../../assets/img/british-flag.svg.png')
+    },
+    {
+        label: 'Lagos',
+        value: 2,
+        name: 'Lagos',
+        id: 2,
+        flagImage: require('../../../assets/img/nigerian-flag.png')
+    }
+
 ];

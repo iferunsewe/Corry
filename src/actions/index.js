@@ -1,7 +1,7 @@
 const API_ENDPOINT = 'http://192.168.0.11:3000';
 
-export function getLocation() {
-    return fetch(API_ENDPOINT + '/location/2', {
+export function getLocation(location_id) {
+    return fetch(API_ENDPOINT + '/location/' + location_id, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
