@@ -68,6 +68,7 @@ export default class ChooseRequestScreen extends Component{
                         items={countries}
                         onValueChange={(value) => {
                             console.log("Changing location: " + value)
+                            this.fetchLocation(value)
 
                     }}
                         style={{...pickerSelectStyles}}

@@ -92,7 +92,7 @@ export default class PostRequestScreen extends Component{
     async pickImage(){
         var result = await ImagePicker.launchImageLibraryAsync({
             allowsEditing: true,
-            aspect: [4, 3],
+            aspect: [4, 3]
         });
 
         console.log(result);
