@@ -45,13 +45,13 @@ export default class App extends Component {
           <Router>
             <Scene key="root">
               <Scene key="splash" component={SplashScreen} navBar={SplashScreenNavBar} />
-              <Scene key="launchDecision" component={LaunchDecisionScreen} navBar={NavBar} initial={true}/>
+              <Scene key="launchDecision" component={LaunchDecisionScreen} navBar={NavBar} />
               <Scene key="buyer" component={BuyerScreen} navBar={NavBar} />
               <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
               <Scene key="registration" component={RegisterScreen} navBar={NavBar} />
               <Scene key="login" component={LoginScreen} navBar={NavBar} />
               <Scene key="chooseTraveller" component={ChooseTravellerScreen} navBar={NavBar} />
-              <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} />
+              <Scene key="postRequest" component={PostRequestScreen} navBar={NavBar} initial={true}/>
               <Scene key="buyerInfoScreen" component={BuyerInfoScreen} navBar={NavBar} />
               <Scene key="chooseRequest" component={ChooseRequestScreen} navBar={NavBar} />
               <Scene key="request" component={RequestScreen} navBar={NavBar} />

@@ -18,21 +18,22 @@ import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput';
 import { getLocations, createRequest } from '../../actions/index';
 import ErrorText from '../helpers/ErrorText'
-import { ImagePicker } from 'expo';
+import { ImagePicker, Permissions } from 'expo';
 
 export default class PostRequestScreen extends Component{
     constructor(){
         super();
         this.state = {
             quantity: 1,
-            price: 0,
-            name: '',
-            shop: '',
-            link: '',
-            location_id: 1,
+            price: 200,
+            name: "Dummy name",
+            shop: "Dummy shop",
+            link: "dummy.link.com",
+            location_id: 2,
             error: '',
             errorPresent: false,
-            image: null
+            image: null,
+            avatarURI: null
         }
     }
 
@@ -45,19 +46,20 @@ export default class PostRequestScreen extends Component{
         return fee;
     }
 
+
     submitRequest(){
-        createRequest({
-            name: this.state.name,
-            price: this.state.price,
-            shop: this.state.shop,
-            quantity: this.state.quantity,
-            link: this.state.link,
-            buyer_name: this.props.buyerName,
-            buyer_phone_number: this.props.buyerPhoneNumber,
-            buyer_email_address: this.props.buyerEmailAddress,
-            location_id: this.state.location_id
-        }).then(responseData => {
-            console.log(responseData['traveller_fee'])
+        let formData = new FormData();
+        formData.append('avatar', this.state.image)
+        formData.append("name", this.state.name)
+        formData.append("price", this.state.price)
+        formData.append("shop", this.state.shop)
+        formData.append("quantity", this.state.quantity)
+        formData.append("link", this.state.link)
+        formData.append("buyer_name", "Dummy buyer name")
+        formData.append("buyer_phone_number", "07777788888")
+        formData.append("buyer_email_address", "dummy@email.com")
+        formData.append("location_id",this.state.location_id)
+        createRequest(formData).then(responseData => {
             this.setState({error: '', errorPresent: false});
             Actions.request({
                     name: responseData['name'],
@@ -85,25 +87,52 @@ export default class PostRequestScreen extends Component{
     }
 
     blankFieldsExist(){
-        return this.state.name == '' || this.state.shop == '' || this.state.price == 0;
+        return this.state.shop == '' || this.state.price == 0;
 
     }
 
     async pickImage(){
-        var result = await ImagePicker.launchImageLibraryAsync({
-            allowsEditing: true,
-            aspect: [4, 3]
-        });
+        const results = await Promise.all([
+            Permissions.askAsync(Permissions.CAMERA),
+            Permissions.askAsync(Permissions.CAMERA_ROLL)
+        ]);
 
-        console.log(result);
+        if(results.some(({ status }) => status !== 'granted')){
+            console.log("PERMISSION NOT GRANTED")
+        } else {
+            var result = await ImagePicker.launchImageLibraryAsync({
+                allowsEditing: true,
+                aspect: [4, 3]
+            });
 
-        if (!result.cancelled) {
-            this.setState({ image: result.uri });
+            console.log(result);
+
+            if (!result.cancelled) {
+                console.log(this.createImageData(result.uri))
+                this.setState({
+                    avatarURI: result.uri,
+                    image: this.createImageData(result.uri)
+                })
+            }
         }
     };
 
+    createImageData(uri){
+        let uriParts = uri.split('.');
+        let fileType = uriParts[uriParts.length - 1];
+
+        let data = {
+            uri,
+            name: `photo.${fileType}`,
+            type: `image/${fileType}`
+        }
+        return data
+    }
+
+
+
     render() {
-        let { image } = this.state;
+        let { avatarURI } = this.state;
 
         return(
             <ScrollView style={styles.container}>
@@ -181,7 +210,7 @@ export default class PostRequestScreen extends Component{
                             />
                         </View>
                         <View style={styles.imagePickerSubContainer}>
-                            {image && <Image source={{ uri: image }} style={styles.uploadedImage} />}
+                            {avatarURI && <Image source={{ uri: avatarURI }} style={styles.uploadedImage} />}
                         </View>
                     </View>
 
@@ -207,6 +236,7 @@ export default class PostRequestScreen extends Component{
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {

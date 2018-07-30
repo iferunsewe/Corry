@@ -84,7 +84,7 @@ export default class BuyerInfoScreen extends Component {
                         fontFamily="myriad-pro-regular"
                         backgroundColor="#EEBE2E"
                         color="#231F20"
-                        disabled={this.blankFieldsExist()}
+                        //disabled={this.blankFieldsExist()}
                 />
                 <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
             </View>
