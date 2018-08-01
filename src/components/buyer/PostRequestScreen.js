@@ -55,9 +55,10 @@ export default class PostRequestScreen extends Component{
             buyer_name: this.props.buyerName,
             buyer_phone_number: this.props.buyerPhoneNumber,
             buyer_email_address: this.props.buyerEmailAddress,
-            location_id: this.state.location_id
+            location_id: this.state.location_id,
+            avatar: this.state.image
         }).then(responseData => {
-            console.log(responseData['traveller_fee'])
+            console.log(responseData)
             this.setState({error: '', errorPresent: false});
             Actions.request({
                     name: responseData['name'],
@@ -69,7 +70,9 @@ export default class PostRequestScreen extends Component{
                     buyerPhoneNumber: responseData['buyer_phone_number'],
                     buyerEmailAddress: responseData['buyer_email_address'],
                     travellersFee: responseData['traveller_fee'],
-                    location: this.selectCountryById(this.state.location_id)['name']
+                    location: this.selectCountryById(this.state.location_id)['name'],
+                    avatarUrl: responseData["image_url"],
+                    avatarPresent: true
             })
         }).catch(error => {
             console.log(error)
@@ -92,15 +95,23 @@ export default class PostRequestScreen extends Component{
     async pickImage(){
         var result = await ImagePicker.launchImageLibraryAsync({
             allowsEditing: true,
-            aspect: [4, 3]
+            aspect: [4, 3],
+            base64: true
         });
 
-        console.log(result);
+        let newImageURI = this.createImageBase64(result.uri, result.base64);
 
         if (!result.cancelled) {
-            this.setState({ image: result.uri });
+            this.setState({ image: newImageURI});
         }
     };
+
+    createImageBase64(uri, base64){
+        let uriParts = uri.split('.');
+        let fileType = uriParts[uriParts.length - 1];
+
+        return 'data:image/' + fileType + ';base64,' + base64;
+    }
 
     render() {
         let { image } = this.state;

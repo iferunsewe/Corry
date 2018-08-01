@@ -13,11 +13,12 @@ import { FormattedCurrency } from 'react-native-globalize';
 
 export default class RequestScreen extends Component{
 
+
     render() {
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.mainDetailsContainer}>
-                    <Image style={styles.itemPhoto} source={this.props.avatarUrl || defaultProfile.avatarUrl} />
+                    <Image style={styles.itemPhoto} source={{uri : this.props.avatarUrl}} />
                     <View style={styles.itemNameContainer}>
                         <Text style={styles.itemName} numberOfLines={2}>{this.props.name || defaultProfile.name}</Text>
                     </View>
