@@ -61,7 +61,7 @@ export default class LoginScreen extends Component {
         }).then(responseData => {
             this.setState({error: '', errorPresent: false});
             this.storeToken(responseData["access_token"]);
-            Actions.decision()
+            Actions.launchDecision()
         }).catch(error => {
             console.log(error);
             error.json().then(error => {
