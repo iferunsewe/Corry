@@ -165,6 +165,7 @@ export default class PostRequestScreen extends Component{
                                 style={[styles.priceTextInput, styles.priceInput]}
                                 keyboardType="numeric"
                                 maxLength={8}
+                                returnKeyType='done'
                             />
                         </View>
                         <View style={styles.quantityInputContainer}>
@@ -176,6 +177,7 @@ export default class PostRequestScreen extends Component{
                                 keyboardType="numeric"
                                 defaultValue="1"
                                 onChangeText={(quantity) => this.setState({quantity})}
+                                returnKeyType='done'
                             />
                         </View>
                     </View>
