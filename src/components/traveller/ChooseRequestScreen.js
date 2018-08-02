@@ -43,10 +43,12 @@ export default class ChooseRequestScreen extends Component{
         })
     }
 
-    avatarUrl(i){
-        if(dummyRequests[i]){
+    avatarUrl(i, image_url) {
+        if (dummyRequests[i]) {
             return dummyRequests[i].avatarUrl
-        } else {
+        } else if(image_url !== null) {
+            return {uri: image_url}
+        }else {
             return require('../../../assets/img/crunchy_ginger_biscuits.png')
         }
     }
@@ -91,7 +93,7 @@ export default class ChooseRequestScreen extends Component{
                                     price={l['price']}
                                     travellersFee={l['traveller_fee']}
                                     id={l['id']}
-                                    avatarUrl={this.avatarUrl(i)}
+                                    imageUrl={this.avatarUrl(i, l['image_url'])}
                                     buyerName={l['buyer_name']}
                                     buyerEmailAddress={l['buyer_email_address']}
                                     buyerPhoneNumber={l['buyer_phone_number']}

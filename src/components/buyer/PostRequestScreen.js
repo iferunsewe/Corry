@@ -56,9 +56,8 @@ export default class PostRequestScreen extends Component{
             buyer_phone_number: this.props.buyerPhoneNumber,
             buyer_email_address: this.props.buyerEmailAddress,
             location_id: this.state.location_id,
-            avatar: this.state.image
+            image: this.state.image
         }).then(responseData => {
-            console.log(responseData)
             this.setState({error: '', errorPresent: false});
             Actions.request({
                     name: responseData['name'],
@@ -71,8 +70,8 @@ export default class PostRequestScreen extends Component{
                     buyerEmailAddress: responseData['buyer_email_address'],
                     travellersFee: responseData['traveller_fee'],
                     location: this.selectCountryById(this.state.location_id)['name'],
-                    avatarUrl: responseData["image_url"],
-                    avatarPresent: true
+                    imageUrl: {uri: responseData["image_url"]},
+                    imagePresent: true
             })
         }).catch(error => {
             console.log(error)

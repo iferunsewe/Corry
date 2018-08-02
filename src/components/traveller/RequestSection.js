@@ -19,7 +19,7 @@ export default class RequestSection extends Component {
         Actions.request({
             name: this.props.name,
             price: this.props.price,
-            avatarUrl: this.props.avatarUrl,
+            imageUrl: this.props.imageUrl,
             travellersFee: this.props.travellersFee,
             buyerName: this.props.buyerName,
             buyerEmailAddress: this.props.buyerEmailAddress,
@@ -31,7 +31,7 @@ export default class RequestSection extends Component {
         return(
             <ListItem
                 containerStyle={styles.container}
-                avatar={this.props.avatarUrl}
+                avatar={this.props.imageUrl}
                 avatarStyle={styles.avatarStyle}
                 avatarContainerStyle={styles.avatarContainer}
                 avatarOverlayContainerStyle={styles.avatarOverlayContainer}

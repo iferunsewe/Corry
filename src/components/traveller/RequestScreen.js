@@ -18,7 +18,7 @@ export default class RequestScreen extends Component{
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.mainDetailsContainer}>
-                    <Image style={styles.itemPhoto} source={{uri : this.props.avatarUrl}} />
+                    <Image style={styles.itemPhoto} source={this.props.imageUrl} />
                     <View style={styles.itemNameContainer}>
                         <Text style={styles.itemName} numberOfLines={2}>{this.props.name || defaultProfile.name}</Text>
                     </View>
