@@ -332,15 +332,15 @@ const pickerSelectStyles = StyleSheet.create({
 
 const countries = [
     {
-        label: 'UK',
+        label: 'London',
         value: 1,
-        name: 'United Kingdom',
+        name: 'London',
         id: 1
     },
     {
-        label: 'Nigeria',
+        label: 'Lagos',
         value: 2,
-        name: 'Nigeria',
+        name: 'Lagos',
         id: 2
     }
 
