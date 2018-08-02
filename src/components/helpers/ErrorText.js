@@ -13,13 +13,17 @@ export default class ErrorText extends Component {
     }
 
     render() {
-        return (
-            <View style={styles.errorContainer}>
-                <Text style={styles.error}>
-                    {this.errorTextPresent()}
-                </Text>
-            </View>
-        )
+        if(this.props.showError){
+            return (
+                <View style={styles.errorContainer}>
+                    <Text style={styles.error}>
+                        {this.errorTextPresent()}
+                    </Text>
+                </View>
+            )
+        } else {
+            return null
+        }
     }
 }
 const styles = {

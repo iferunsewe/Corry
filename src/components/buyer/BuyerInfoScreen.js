@@ -23,16 +23,21 @@ export default class BuyerInfoScreen extends Component {
             buyerPhoneNumber: '',
             buyerEmailAddress: '',
             error: '',
-            errorPresent: false
+            errorPresent: false,
+            showError: false
         }
     }
 
     postState (){
-        Actions.postRequest(this.state)
+        if(this.state.errorPresent){
+            this.setState({showError: true})
+        } else {
+            Actions.postRequest(this.state)
+        }
     }
 
     blankFieldsExist(){
-        return this.state.buyerName == '' || this.state.buyerPhoneNumber == '' || this.state.buyerEmailAddress == '' || this.errorPresent
+        return this.state.buyerName == '' || this.state.buyerPhoneNumber == '' || this.state.buyerEmailAddress == '' || this.state.errorPresent
     }
 
     validateEmail(text){
@@ -86,7 +91,7 @@ export default class BuyerInfoScreen extends Component {
                         color="#231F20"
                         disabled={this.blankFieldsExist()}
                 />
-                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
+                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent} showError={this.state.showError}/>
             </View>
         )
     }

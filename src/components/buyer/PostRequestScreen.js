@@ -32,6 +32,7 @@ export default class PostRequestScreen extends Component{
             location_id: 1,
             error: '',
             errorPresent: false,
+            showError: false,
             image: null
         }
     }
@@ -75,7 +76,7 @@ export default class PostRequestScreen extends Component{
             })
         }).catch(error => {
             console.log(error)
-            this.setState({error: error["message"], errorPresent: true});
+            this.setState({error: error["message"], errorPresent: true, showError: true});
         });
 
     }
@@ -214,7 +215,7 @@ export default class PostRequestScreen extends Component{
                         color="#231F20"
                         disabled={this.blankFieldsExist()}
                 />
-                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
+                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent} showError={this.state.showError}/>
             </ScrollView>
         );
     }
