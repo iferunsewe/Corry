@@ -164,7 +164,7 @@ export default class PostRequestScreen extends Component{
                                 onChangeText={(price) => this.setState({price: price})}
                                 style={[styles.priceTextInput, styles.priceInput]}
                                 keyboardType="numeric"
-                                maxLength={5}
+                                maxLength={8}
                             />
                         </View>
                         <View style={styles.quantityInputContainer}>
