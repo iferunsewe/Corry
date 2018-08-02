@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://192.168.0.11:3000';
+const API_ENDPOINT = 'http://goan.herokuapp.com';
 
 export function getLocation(location_id) {
     return fetch(API_ENDPOINT + '/location/' + location_id, {
