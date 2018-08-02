@@ -44,10 +44,10 @@ export default class ChooseRequestScreen extends Component{
     }
 
     avatarUrl(i, image_url) {
-        if (dummyRequests[i]) {
-            return dummyRequests[i].avatarUrl
-        } else if(image_url !== null) {
+        if (image_url !== null) {
             return {uri: image_url}
+        } else if(dummyRequests[i]) {
+            return dummyRequests[i].avatarUrl
         }else {
             return require('../../../assets/img/crunchy_ginger_biscuits.png')
         }

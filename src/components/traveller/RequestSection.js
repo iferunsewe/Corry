@@ -61,7 +61,8 @@ const styles = {
     avatarContainer: {
         width: "100%",
         position: 'absolute',
-        paddingLeft: 20
+        paddingLeft: 20,
+        marginLeft: 30
     },
     avatarStyle: {
         width: 80,
