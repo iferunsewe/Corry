@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import { FormattedCurrency } from 'react-native-globalize';
+import { Actions } from 'react-native-router-flux';
 
 
 export default class RequestSection extends Component {
@@ -14,11 +15,24 @@ export default class RequestSection extends Component {
         super();
     }
 
+    onPressListItem(){
+        Actions.request({
+            name: this.props.name,
+            price: this.props.price,
+            imageUrl: this.props.imageUrl,
+            travellersFee: this.props.travellersFee,
+            buyerName: this.props.buyerName,
+            buyerEmailAddress: this.props.buyerEmailAddress,
+            buyerPhoneNumber: this.props.buyerPhoneNumber,
+            quantity: this.props.quantity
+        })
+    }
+
     render() {
         return(
             <ListItem
                 containerStyle={styles.container}
-                avatar={this.props.avatarUrl}
+                avatar={this.props.imageUrl}
                 avatarStyle={styles.avatarStyle}
                 avatarContainerStyle={styles.avatarContainer}
                 avatarOverlayContainerStyle={styles.avatarOverlayContainer}
@@ -29,6 +43,7 @@ export default class RequestSection extends Component {
                         <Text style={styles.text}>Fee: <FormattedCurrency currency="GBP" value={this.props.travellersFee}/></Text>
                     </View>
                 }
+                onPress={() => this.onPressListItem()}
             >
             </ListItem>
 
@@ -47,7 +62,8 @@ const styles = {
     avatarContainer: {
         width: "100%",
         position: 'absolute',
-        paddingLeft: 20
+        paddingLeft: 20,
+        marginLeft: 30
     },
     avatarStyle: {
         width: 80,

@@ -1,12 +1,48 @@
 import React, {Component} from 'react';
-import {  View, Text, StyleSheet, Image } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    AsyncStorage
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { verifyUser } from '../actions/index';
+
+const ACCESS_TOKEN = 'access_token';
 
 export default class SplashScreen extends Component {
     componentDidMount(){
         this.timeoutHandle = setTimeout(()=>{
-            Actions.decision();
-        }, 2000);
+            this.getToken();
+        }, 3000);
+    }
+
+    async getToken() {
+        try {
+            var token = await AsyncStorage.getItem(ACCESS_TOKEN);
+            if(!token){
+                console.log("Token is not set");
+                Actions.login();
+            } else {
+                this.verifyToken(token)
+            }
+            //console.log("token is: " + token)
+        } catch(error) {
+            console.log("Something went wrong: " + error);
+            Actions.login();
+        }
+    }
+
+    verifyToken(token) {
+        var accessToken = token;
+        verifyUser(accessToken)
+            .then(_ =>{
+                Actions.launchDecision();
+            }).catch(error => {
+                console.log("Something went wrong: " + error);
+                Actions.login();
+            })
     }
 
     componentWillUnmount(){
@@ -29,6 +65,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EEBE2E',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   }
 });

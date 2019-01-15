@@ -3,7 +3,7 @@ import {  View, Text, StyleSheet } from 'react-native';
 import { Button as NativeButton } from 'react-native';
 import { Button, SocialIcon } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
-import Login  from './Login'
+import Login  from './LoginScreen'
 
 export default class AuthenticationScreen extends Component {
     constructor() {
