@@ -214,6 +214,7 @@ export default class PostRequestScreen extends Component{
                         backgroundColor="#EEBE2E"
                         color="#231F20"
                         disabled={this.blankFieldsExist()}
+                        borderRadius={5}
                 />
                 <ErrorText error={this.state.error} errorPresent={this.state.errorPresent} showError={this.state.showError}/>
             </ScrollView>

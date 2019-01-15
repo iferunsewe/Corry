@@ -12,8 +12,6 @@ import ReviewSection from '../profile/ReviewSection';
 import { FormattedCurrency } from 'react-native-globalize';
 
 export default class RequestScreen extends Component{
-
-
     render() {
         return(
             <ScrollView style={styles.container}>
@@ -25,14 +23,14 @@ export default class RequestScreen extends Component{
                     <Text style={styles.itemLocation}>{this.props.location || defaultProfile.location}</Text>
                     <View style={styles.moneyDetails}>
                         <Text style={styles.travellersFee}>Can earn <FormattedCurrency currency="GBP" value={this.props.travellersFee}/></Text>
-                        <Text style={styles.price}>Price is <FormattedCurrency currency="GBP" value={this.props.price}/></Text>
+                        <Text style={styles.price}>Price: <FormattedCurrency currency="GBP" value={this.props.price}/> | Quantity : {this.props.quantity}</Text>
                     </View>
                 </View>
                 <View style={styles.buyerInfoContainer}>
                     <Text style={styles.title}>Buyer info</Text>
-                    <Text>Wanted by: {this.props.buyerName || defaultProfile.location}</Text>
-                    <Text>{this.props.buyerEmailAddress || defaultProfile.location}</Text>
-                    <Text>{this.props.buyerPhoneNumber || defaultProfile.location} </Text>
+                    <Text>Wanted by: {this.props.buyerName || defaultProfile.name}</Text>
+                    <Text>{this.props.buyerEmailAddress || defaultProfile.emailAddress}</Text>
+                    <Text>{this.props.buyerPhoneNumber || defaultProfile.phoneNumber} </Text>
                 </View>
                 <View style={styles.additionalItemInfoContainer}>
                     <Text style={styles.title}>Additional info</Text>
@@ -113,6 +111,8 @@ const defaultProfile = {
     location: 'London',
     avatarUrl: require('../../../assets/img/timi-williams.png'),
     rating: 4.78,
-    numberOfTrips: 17
+    numberOfTrips: 17,
+    emailAddress: "timiwilliams@gmail.com",
+    phoneNumber: "+447788456759"
 };
 

@@ -31,6 +31,7 @@ export default class ChooseRequestScreen extends Component{
     fetchLocation(id) {
         var id = id || 1;
         getLocation(id).then(responseData => {
+            console.log(responseData['requests']);
             this.setState({
                 location: responseData,
                 requests: responseData['requests'],
@@ -91,6 +92,7 @@ export default class ChooseRequestScreen extends Component{
                                     name={l['name']}
                                     key={i}
                                     price={l['price']}
+                                    quantity={l['quantity']}
                                     travellersFee={l['traveller_fee']}
                                     id={l['id']}
                                     imageUrl={this.avatarUrl(i, l['image_url'])}

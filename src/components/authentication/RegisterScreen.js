@@ -4,12 +4,16 @@ import {
     Text,
     StyleSheet,
     TextInput,
-    Dimensions
+    Dimensions,
+    AsyncStorage
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import StyledInput from '../helpers/StyledInput'
 import { Button } from 'react-native-elements'
 import { registerUser } from '../../actions/index';
+import ErrorText from '../helpers/ErrorText'
+
+const ACCESS_TOKEN = 'access_token';
 
 export default class RegisterScreen extends Component {
     constructor(props) {
@@ -20,7 +24,8 @@ export default class RegisterScreen extends Component {
             email: '',
             password: '',
             passwordConfirmation: '',
-            errors: []
+            error: '',
+            errorPresent: false
         }
     }
 
@@ -32,10 +37,47 @@ export default class RegisterScreen extends Component {
             password_confirmation: this.state.passwordConfirmation,
             location_id: 1
         }).then(responseData => {
-            console.log(responseData);
+            this.setState({error: '', errorPresent: false});
+            this.storeToken(responseData["access_token"]);
         }).catch(error => {
-            console.log(error)
+            console.log(error);
+            error.json().then(error => {
+                this.setState({error: error["message"], errorPresent: true});
+                this.removeToken();
+            })
         })
+    }
+
+    async storeToken(accessToken){
+        try {
+            await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+            Actions.launchDecision()
+            this.getToken();
+        } catch(error) {
+            this.setState({error: "Something went wrong: " + error, errorPresent: true});
+        }
+    }
+
+    async getToken(){
+        try {
+            var token = await AsyncStorage.getItem(ACCESS_TOKEN);
+            console.log("token is: " + token)
+        } catch(error) {
+            error_log = "Something went wrong: " + error;
+            console.log(error_log);
+            this.setState({error: error_log, errorPresent: true});
+        }
+    }
+
+    async removeToken(){
+        try {
+            await AsyncStorage.removeItem(ACCESS_TOKEN);
+            this.getToken()
+        } catch(error) {
+            error_log = "Something went wrong: " + error;
+            console.log(error_log);
+            this.setState({error: error_log, errorPresent: true});
+        }
     }
 
     render() {
@@ -75,8 +117,10 @@ export default class RegisterScreen extends Component {
                             fontFamily="myriad-pro-regular"
                             backgroundColor="#EEBE2E"
                             color="#231F20"
+                            borderRadius={5}
                     />
                 </View>
+                <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
             </View>
         )
     }

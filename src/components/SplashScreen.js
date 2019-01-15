@@ -15,7 +15,7 @@ export default class SplashScreen extends Component {
     componentDidMount(){
         this.timeoutHandle = setTimeout(()=>{
             this.getToken();
-        }, 10000);
+        }, 3000);
     }
 
     async getToken() {
@@ -38,7 +38,7 @@ export default class SplashScreen extends Component {
         var accessToken = token;
         verifyUser(accessToken)
             .then(_ =>{
-                Actions.decision();
+                Actions.launchDecision();
             }).catch(error => {
                 console.log("Something went wrong: " + error);
                 Actions.login();

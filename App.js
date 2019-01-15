@@ -44,8 +44,8 @@ export default class App extends Component {
         <FormattedWrapper locale="en">
           <Router>
             <Scene key="root">
-              <Scene key="splash" component={SplashScreen} navBar={SplashScreenNavBar} />
-              <Scene key="launchDecision" component={LaunchDecisionScreen} navBar={NavBar} initial={true}/>
+              <Scene key="splash" component={SplashScreen} navBar={SplashScreenNavBar} initial={true}/>
+              <Scene key="launchDecision" component={LaunchDecisionScreen} navBar={NavBar} />
               <Scene key="buyer" component={BuyerScreen} navBar={NavBar} />
               <Scene key="traveller" component={TravellerScreen} navBar={NavBar} />
               <Scene key="registration" component={RegisterScreen} navBar={NavBar} />

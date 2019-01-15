@@ -23,7 +23,8 @@ export default class RequestSection extends Component {
             travellersFee: this.props.travellersFee,
             buyerName: this.props.buyerName,
             buyerEmailAddress: this.props.buyerEmailAddress,
-            buyerPhoneNumber: this.props.buyerPhoneNumber
+            buyerPhoneNumber: this.props.buyerPhoneNumber,
+            quantity: this.props.quantity
         })
     }
 

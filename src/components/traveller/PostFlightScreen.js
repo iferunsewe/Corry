@@ -63,6 +63,7 @@ export default class PostFlightScreen extends Component{
                         fontFamily="myriad-pro-regular"
                         backgroundColor="#EEBE2E"
                         color="#231F20"
+                        borderRadius={5}
                 />
             </View>
         } else {

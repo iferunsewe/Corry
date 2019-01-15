@@ -95,7 +95,12 @@ export default class LoginScreen extends Component {
                             fontFamily="myriad-pro-regular"
                             backgroundColor="#EEBE2E"
                             color="#231F20"
+                            borderRadius={5}
                     />
+                    <Text style={styles.registerLink}
+                          onPress={() => Actions.registration()}>
+                        new to us? register here
+                    </Text>
                 </View>
                 <ErrorText error={this.state.error} errorPresent={this.state.errorPresent}/>
             </View>
@@ -125,5 +130,11 @@ const styles = {
         paddingRight: 20,
         alignItems: 'center',
         marginTop: 80
+    },
+    registerLink:{
+        marginTop: 15,
+        color: '#EEBE2E',
+        fontFamily: 'myriad-pro-regular',
+        fontSize: 14
     }
 };
